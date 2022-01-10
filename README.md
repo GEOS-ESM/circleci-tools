@@ -11,13 +11,9 @@ _For full usage guidelines, see the [orb registry listing](https://circleci.com/
 
 ## Contributing
 
-Please check out our [contributing guidelines](CONTRIBUTING.md).
-
-### How to Contribute
-
 We welcome [issues](https://github.com/GEOS-ESM/circleci-tools/issues) to and [pull requests](https://github.com/GEOS-ESM/circleci-tools/pulls) against this repository!
 
-### How to Publish
+## How to Publish
 
 * Create and push a branch with your new features.
 * When ready to publish a new production version, create a Pull Request from _feature branch_ to `master`.
@@ -34,11 +30,6 @@ Example: `[semver:major]`
 
 * Squash and merge. Ensure the semver tag is preserved and entered as a part of the commit message.
 * On merge, after manual approval, the orb will automatically be published to the Orb Registry.
-
-## License
-
-All files are currently licensed under the Apache-2.0 license, see [`LICENSE`](LICENSE).
-
 
 For further questions/comments about this or other orbs, visit the Orb Category of [CircleCI Discuss](https://discuss.circleci.com/c/orbs).
 
