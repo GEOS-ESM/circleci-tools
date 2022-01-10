@@ -1,0 +1,22 @@
+description: "Build and install (retry after fail)"
+
+parameters:
+  repo:
+    description: "Name of repository"
+    type: string
+    default: ""
+
+steps:
+  - run:
+      name: "Build and install"
+      command: |
+        cd ${CIRCLE_WORKING_DIRECTORY}/workspace/build-<< parameters.repo >>
+        make -j"$(nproc)" install |& tee /logfiles/make.log
+        #MEDIUM# make -j4 install |& tee /logfiles/make.log
+  - run:
+      name: "Retry build and install after failure"
+      command: |
+        cd ${CIRCLE_WORKING_DIRECTORY}/workspace/build-<< parameters.repo >>
+        make -j"$(nproc)" install |& tee /logfiles/make-retry.log
+        #MEDIUM# make -j4 install |& tee /logfiles/make-retry.log
+      when: on_fail

@@ -1,0 +1,13 @@
+description: "Versions, etc."
+
+parameters:
+  compiler:
+    description: "Compiler name"
+    type: string
+    default: ""
+
+steps:
+  - run:
+      name: "Versions, etc."
+      command: |
+        mpirun --version && << parameters.compiler >> --version && echo $BASEDIR && pwd && ls && echo "$(nproc)"

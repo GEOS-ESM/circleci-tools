@@ -1,0 +1,21 @@
+description: "Run CMake"
+
+parameters:
+  repo:
+    description: "Name of repository"
+    type: string
+    default: ""
+  compiler:
+    description: "Compiler"
+    type: string
+    default: ""
+
+steps:
+  - run:
+      name: "Run CMake"
+      command: |
+        mkdir -p /logfiles
+        cd ${CIRCLE_WORKING_DIRECTORY}/<< parameters.repo >>
+        mkdir -p ${CIRCLE_WORKING_DIRECTORY}/workspace/build-<< parameters.repo >>
+        cd ${CIRCLE_WORKING_DIRECTORY}/workspace/build-<< parameters.repo >>
+        cmake ${CIRCLE_WORKING_DIRECTORY}/<< parameters.repo >> -DBASEDIR=$BASEDIR/Linux -DCMAKE_Fortran_COMPILER=<< parameters.compiler >> -DCMAKE_BUILD_TYPE=Debug -DUSE_F2PY=OFF -DMPIEXEC_PREFLAGS=${MPIEXEC_PREFLAGS} -DCMAKE_INSTALL_PREFIX=${CIRCLE_WORKING_DIRECTORY}/workspace/install-<< parameters.repo >> |& tee /logfiles/cmake.log

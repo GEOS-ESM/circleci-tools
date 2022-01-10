@@ -1,0 +1,15 @@
+description: "Mepo clone external repos"
+
+parameters:
+  repo:
+    description: "Name of repository"
+    type: string
+    default: ""
+
+steps:
+  - run:
+      name: "Mepo clone external repos"
+      command: |
+        cd ${CIRCLE_WORKING_DIRECTORY}/<< parameters.repo >>
+        mepo clone
+        mepo status

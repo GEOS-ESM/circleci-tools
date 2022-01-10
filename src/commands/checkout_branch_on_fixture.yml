@@ -1,0 +1,18 @@
+description: "Checkout branch on fixture"
+
+parameters:
+  repo:
+    description: "Name of the repo to act upon"
+    type: string
+    default: ""
+  branch:
+    description: "Name of the branch to checkout"
+    type: string
+    default: ""
+
+steps:
+  - run:
+      name: "Checkout branch on fixture"
+      command: |
+        cd ${CIRCLE_WORKING_DIRECTORY}/<< parameters.repo >>
+        git checkout << parameters.branch >>

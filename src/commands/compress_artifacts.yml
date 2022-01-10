@@ -1,0 +1,7 @@
+description: "Compress artifacts"
+
+steps:
+  - run:
+      name: "Compress artifacts"
+      command: |
+        gzip -9 /logfiles/*
