@@ -7,17 +7,18 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ### Added
- - Added `.editorconfig` file
+
 ### Changed
- - Updated `@orb.yml`
+
 ### Removed
 
-## [1.0.0] - YYYY-MM-DD
+## [0.0.1] - 2021-01-10
 
 ### Added
- - Initial Release
+ - Added `.editorconfig` file
+ - Added commands from MAPL CI
+ - Add changelog enforcer
 ### Changed
- - Initial Release
-### Removed
- - Initial Release
+ - Updated `@orb.yml`
+ - Updated license to GEOS Apache
 
