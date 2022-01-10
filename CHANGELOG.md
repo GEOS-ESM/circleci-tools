@@ -5,15 +5,22 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
- - Current development changes [ to be moved to release ]
 
-## [1.0.0] - YYYY-MM-DD
 ### Added
- - Initial Release
+
 ### Changed
- - Initial Release
+
 ### Removed
- - Initial Release
 
+## [0.0.1] - 2021-01-10
 
-[1.0.0]: GITHUB TAG URL
+### Added
+ - Added `.editorconfig` file
+ - Added commands from MAPL CI
+ - Add changelog enforcer
+ - Added GEOS license and contributing file
+### Changed
+ - Updated `@orb.yml`
+ - Updated license to GEOS Apache
+ - Updated README
+

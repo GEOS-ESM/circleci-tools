@@ -1,0 +1,14 @@
+description: "Checkout fixture"
+
+parameters:
+  repo:
+    description: "Name of repository"
+    type: string
+    default: ""
+
+steps:
+  - run:
+      name: "Checkout fixture"
+      command: |
+        cd ${CIRCLE_WORKING_DIRECTORY}
+        git clone https://github.com/GEOS-ESM/<< parameters.repo >>.git
