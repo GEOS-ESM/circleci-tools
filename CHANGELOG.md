@@ -12,15 +12,24 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Removed
 
+## [0.1.0] - 2021-01-10
+
+### Changed
+
+- Made GEOSgcm the default repo of the commands
+
 ## [0.0.1] - 2021-01-10
 
 ### Added
- - Added `.editorconfig` file
- - Added commands from MAPL CI
- - Add changelog enforcer
- - Added GEOS license and contributing file
+
+- Added `.editorconfig` file
+- Added commands from MAPL CI
+- Add changelog enforcer
+- Added GEOS license and contributing file
+
 ### Changed
- - Updated `@orb.yml`
- - Updated license to GEOS Apache
- - Updated README
+
+- Updated `@orb.yml`
+- Updated license to GEOS Apache
+- Updated README
 
