@@ -18,7 +18,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
  - Added `.editorconfig` file
  - Added commands from MAPL CI
  - Add changelog enforcer
+ - Added GEOS license and contributing file
 ### Changed
  - Updated `@orb.yml`
  - Updated license to GEOS Apache
+ - Updated README
 
