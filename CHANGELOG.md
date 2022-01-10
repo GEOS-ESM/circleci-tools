@@ -12,6 +12,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Removed
 
+## [0.2.0] - 2021-01-10
+
+### Added
+
+- Added the gfortran and ifort executors
+  - They have a parameter, `resource_class` which defaults to `large`
+
 ## [0.1.0] - 2021-01-10
 
 ### Changed
