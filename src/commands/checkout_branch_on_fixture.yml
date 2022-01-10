@@ -4,7 +4,7 @@ parameters:
   repo:
     description: "Name of the repo to act upon"
     type: string
-    default: ""
+    default: GEOSgcm
   branch:
     description: "Name of the branch to checkout"
     type: string

@@ -4,7 +4,7 @@ parameters:
   repo:
     description: "Name of repository"
     type: string
-    default: ""
+    default: GEOSgcm
 
 steps:
   - run:
