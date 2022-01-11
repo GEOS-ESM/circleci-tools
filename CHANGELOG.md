@@ -12,6 +12,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Removed
 
+## [0.4.0] - 2021-01-11
+
+### Changed
+
+- Change how to handle retry-builds.
+  - Before, it used `when: on_fail` and this worked in CircleCI land, but CircleCI labels any failure of a job a failure overall
+    even with an `on_fail`. So here we use a bash `||` to trigger the rebuild
+
 ## [0.3.0] - 2021-01-10
 
 ### Changed
