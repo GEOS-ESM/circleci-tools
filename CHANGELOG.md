@@ -12,6 +12,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Removed
 
+## [0.6.0] - 2021-01-28
+
+### Added
+
+- Added executors with boundary conditions
+- Added checkoutifexists command
+
 ## [0.5.0] - 2021-01-13
 
 ### Added
