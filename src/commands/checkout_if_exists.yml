@@ -1,0 +1,20 @@
+description: "Mepo checkout-if-exists"
+
+parameters:
+  repo:
+    description: "Name of repository"
+    type: string
+    default: GEOSgcm
+
+steps:
+  - run:
+      name: "Mepo checkout-if-exists"
+      command: |
+        cd ${CIRCLE_WORKING_DIRECTORY}/<< parameters.repo >>
+        echo "${CIRCLE_BRANCH}"
+        if [ "${CIRCLE_BRANCH}" != "develop" ] && [ "${CIRCLE_BRANCH}" != "main" ]
+        then
+            mepo checkout-if-exists ${CIRCLE_BRANCH}
+        fi
+        mepo status
+
