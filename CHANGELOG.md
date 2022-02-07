@@ -12,6 +12,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Removed
 
+## [0.9.0] - 2021-02-07
+
+### Added
+
+- Added new parameter to cmake command to allow build type to be specified. Uses enum to force allowed value
+
+### Changed
+
+- Added `mepo status` at the end of subrepo-checkout step
+
 ## [0.8.0] - 2021-02-07
 
 ### Added

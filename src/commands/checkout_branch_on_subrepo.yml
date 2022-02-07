@@ -20,3 +20,4 @@ steps:
       command: |
         cd ${CIRCLE_WORKING_DIRECTORY}/<< parameters.repo >>
         mepo checkout << parameters.branch >> << parameters.subrepo >>
+        mepo status
