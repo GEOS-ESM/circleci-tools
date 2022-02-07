@@ -12,6 +12,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Removed
 
+## [0.7.0] - 2021-02-07
+
+### Added
+
+- Add command to `mepo checkout` branch on subrepo
+
 ## [0.6.0] - 2021-01-28
 
 ### Added
