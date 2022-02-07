@@ -1,0 +1,22 @@
+description: "Mepo checkout branch on subrepo"
+
+parameters:
+  repo:
+    description: "Name of the repo to act upon"
+    type: string
+    default: GEOSgcm
+  branch:
+    description: "Name of the branch to checkout"
+    type: string
+    default: ""
+  subrepo:
+    description: "Name of the subrepo to checkout branch on"
+    type: string
+    default: ""
+
+steps:
+  - run:
+      name: "Mepo checkout branch on subrepo"
+      command: |
+        cd ${CIRCLE_WORKING_DIRECTORY}/<< parameters.repo >>
+        mepo checkout << parameters.branch >> << parameters.subrepo >>
