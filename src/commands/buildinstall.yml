@@ -5,10 +5,14 @@ parameters:
     description: "Name of repository"
     type: string
     default: GEOSgcm
+  rebuild_procs:
+    description: "Number of processes for rebuild step"
+    type: integer
+    default: 4
 
 steps:
   - run:
       name: "Build and install"
       command: |
         cd ${CIRCLE_WORKING_DIRECTORY}/workspace/build-<< parameters.repo >>
-        make -j"$(nproc)" install |& tee /logfiles/make.log || make -j4 install |& tee /logfiles/make-retry.log
+        make -j "$(nproc)" install |& tee /logfiles/make.log || make -j << parameters.rebuild_procs >> install |& tee /logfiles/make-retry.log

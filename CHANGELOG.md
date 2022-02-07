@@ -12,6 +12,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Removed
 
+## [0.8.0] - 2021-02-07
+
+### Added
+
+- Added new parameter to buildinstall to allow number of processes for rebuild step to be changed
+
 ## [0.7.0] - 2021-02-07
 
 ### Added
