@@ -12,6 +12,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Removed
 
+## [0.10.0] - 2021-02-07
+
+### Added
+
+- Added new parameter to cmake command to allow extra options to be passed to CMake.
+
 ## [0.9.0] - 2021-02-07
 
 ### Added
