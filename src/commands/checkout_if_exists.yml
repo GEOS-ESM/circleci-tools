@@ -11,10 +11,12 @@ steps:
       name: "Mepo checkout-if-exists"
       command: |
         cd ${CIRCLE_WORKING_DIRECTORY}/<< parameters.repo >>
-        echo "${CIRCLE_BRANCH}"
+        echo "Branch: ${CIRCLE_BRANCH}"
         if [ "${CIRCLE_BRANCH}" != "develop" ] && [ "${CIRCLE_BRANCH}" != "main" ]
         then
-            mepo checkout-if-exists ${CIRCLE_BRANCH}
+           mepo checkout-if-exists ${CIRCLE_BRANCH}
+        else
+           mepo checkout ${CIRCLE_BRANCH} ${CIRCLE_PROJECT_REPONAME}
         fi
         mepo status
 
