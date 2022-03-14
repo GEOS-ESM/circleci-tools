@@ -12,6 +12,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Removed
 
+## [0.13.0] - 2021-03-14
+
+### Added
+
+- Add new `buildtarget` command to build any target
+
 ## [0.12.0] - 2021-03-09
 
 ### Changed
