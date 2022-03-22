@@ -1,0 +1,18 @@
+description: "Build unit tests"
+
+parameters:
+  repo:
+    description: "Name of repository"
+    type: string
+    default: GEOSgcm
+  rebuild_procs:
+    description: "Number of processes for rebuild step"
+    type: integer
+    default: 4
+
+steps:
+  - run:
+      name: "Build tests"
+      command: |
+        cd ${CIRCLE_WORKING_DIRECTORY}/workspace/build-<< parameters.repo >>
+        make -j "$(nproc)" build-tests |& tee /logfiles/build-tests.log || make -j << parameters.rebuild_procs >> build-tests |& tee /logfiles/build-tests-retry.log

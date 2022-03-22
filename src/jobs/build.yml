@@ -1,0 +1,122 @@
+description: >
+  Build and install GEOS-ESM multirepo with optional tests
+
+parameters:
+  repo:
+    type: string
+    default: GEOSgcm
+    description: "Name of the repo to act upon"
+  compiler:
+    type: enum
+    default: ifort
+    description: "Compiler to use"
+    enum: ["ifort", "gfortran"]
+  resource_class:
+    type: enum
+    default: large
+    description: "Resource class to use"
+    enum: ["medium", "large", "xlarge"]
+  fixture:
+    type: string
+    default: ""
+    description: "Name of the fixture to checkout"
+  fixture_branch:
+    type: string
+    default: ""
+    description: "Name of the branch to checkout on the fixture"
+  build_type:
+    description: Build type for CMake. Must be one of "Debug", "Release", or "Aggressive"
+    type: enum
+    default: "Debug"
+    enum: ["Debug", "Release", "Aggressive"]
+  extra_cmake_options:
+    description: Extra options to pass to CMake
+    type: string
+    default: ""
+  rebuild_procs:
+    description: "Number of processes for rebuild step"
+    type: integer
+    default: 4
+  run_unit_tests:
+    description: "Boolean to trigger unit tests"
+    type: boolean
+    default: false
+  ctest_options:
+    description: "Options to pass to ctest"
+    type: string
+    default: ""
+  buildtarget:
+    description: "Target to build"
+    type: string
+    default: install
+  mepodevelop:
+    description: "Run mepo develop"
+    type: boolean
+    default: false
+  checkout_mapl_branch:
+    description: "Checkout MAPL branch"
+    type: boolean
+    default: false
+
+executor:
+  name: circleci-tools/<< parameters.compiler >>
+  resource_class: << parameters.resource_class >>
+
+steps:
+  - circleci-tools/versions:
+      compiler: << parameters.compiler >>
+  # If we have to checkout a fixture, do that...
+  - when:
+      condition: << parameters.fixture >>
+      steps:
+        - circleci-tools/checkout_fixture:
+            repo: << parameters.repo >>
+  # else we use the normal checkout
+  - unless:
+      condition: << parameters.fixture >>
+      steps:
+        - checkout:
+            path: << parameters.repo >>
+  - when:
+      condition: << parameters.fixture_branch >>
+      steps:
+        - circleci-tools/checkout_branch_on_fixture:
+            repo: << parameters.repo >>
+            branch: << parameters.fixture_branch >>
+  - circleci-tools/mepoclone:
+      repo: << parameters.repo >>
+  - when:
+      condition: << parameters.mepodevelop >>
+      steps:
+        - circleci-tools/mepodevelop:
+            repo: << parameters.repo >>
+  - when:
+      condition: << parameters.checkout_mapl_branch >>
+      steps:
+        - circleci-tools/checkout_mapl_branch:
+            repo: << parameters.repo >>
+  - unless:
+      condition: << parameters.checkout_mapl_branch >>
+      steps:
+        - circleci-tools/checkout_if_exists:
+            repo: << parameters.repo >>
+  - circleci-tools/cmake:
+      compiler: << parameters.compiler >>
+      build_type: << parameters.build_type >>
+      extra_cmake_options: << parameters.extra_cmake_options >>
+  - circleci-tools/buildtarget:
+      repo: << parameters.repo >>
+      rebuild_procs: << parameters.rebuild_procs >>
+      target: << parameters.buildtarget >>
+  - when:
+      condition: << parameters.run_unit_tests >>
+      steps:
+        - circleci-tools/buildtests:
+            repo: << parameters.repo >>
+            rebuild_procs: << parameters.rebuild_procs >>
+        - circleci-tools/runtests:
+            repo: << parameters.repo >>
+            ctest_options: << parameters.ctest_options >>
+  - circleci-tools/compress_artifacts
+  - store_artifacts:
+      path: /logfiles

@@ -1,0 +1,18 @@
+description: "Run unit tests"
+
+parameters:
+  repo:
+    description: "Name of repository"
+    type: string
+    default: GEOSgcm
+  ctest_options:
+    description: "Options to pass to ctest"
+    type: string
+    default: ""
+
+steps:
+  - run:
+      name: "Run tests"
+      command: |
+        cd ${CIRCLE_WORKING_DIRECTORY}/workspace/build-<< parameters.repo >>
+        ctest << parameters.ctest_options >> |& tee /logfiles/ctest.log
