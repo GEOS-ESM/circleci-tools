@@ -53,6 +53,10 @@ parameters:
     description: "Run mepo develop"
     type: boolean
     default: false
+  develop_repos:
+    description: "Repos to run mepo develop on"
+    type: string
+    default: "GEOSgcm_GridComp GEOSgcm_App GMAO_Shared"
   checkout_mapl_branch:
     description: "Checkout MAPL branch"
     type: boolean
@@ -92,6 +96,7 @@ steps:
       steps:
         - mepodevelop:
             repo: << parameters.repo >>
+            subrepos: << parameters.develop_repos >>
   - when:
       condition: << parameters.checkout_mapl_branch >>
       steps:
