@@ -75,7 +75,7 @@ steps:
             repo: << parameters.repo >>
   # else we use the normal checkout
   - unless:
-      condition: << parameters.repo >>
+      condition: << parameters.checkout_fixture >>
       steps:
         - checkout:
             path: << parameters.repo >>
