@@ -59,17 +59,17 @@ parameters:
     default: false
 
 executor:
-  name: circleci-tools/<< parameters.compiler >>
+  name: << parameters.compiler >>
   resource_class: << parameters.resource_class >>
 
 steps:
-  - circleci-tools/versions:
+  - versions:
       compiler: << parameters.compiler >>
   # If we have to checkout a fixture, do that...
   - when:
       condition: << parameters.fixture >>
       steps:
-        - circleci-tools/checkout_fixture:
+        - checkout_fixture:
             repo: << parameters.repo >>
   # else we use the normal checkout
   - unless:
@@ -80,43 +80,43 @@ steps:
   - when:
       condition: << parameters.fixture_branch >>
       steps:
-        - circleci-tools/checkout_branch_on_fixture:
+        - checkout_branch_on_fixture:
             repo: << parameters.repo >>
             branch: << parameters.fixture_branch >>
-  - circleci-tools/mepoclone:
+  - mepoclone:
       repo: << parameters.repo >>
   - when:
       condition: << parameters.mepodevelop >>
       steps:
-        - circleci-tools/mepodevelop:
+        - mepodevelop:
             repo: << parameters.repo >>
   - when:
       condition: << parameters.checkout_mapl_branch >>
       steps:
-        - circleci-tools/checkout_mapl_branch:
+        - checkout_mapl_branch:
             repo: << parameters.repo >>
   - unless:
       condition: << parameters.checkout_mapl_branch >>
       steps:
-        - circleci-tools/checkout_if_exists:
+        - checkout_if_exists:
             repo: << parameters.repo >>
-  - circleci-tools/cmake:
+  - cmake:
       compiler: << parameters.compiler >>
       build_type: << parameters.build_type >>
       extra_cmake_options: << parameters.extra_cmake_options >>
-  - circleci-tools/buildtarget:
+  - buildtarget:
       repo: << parameters.repo >>
       rebuild_procs: << parameters.rebuild_procs >>
       target: << parameters.buildtarget >>
   - when:
       condition: << parameters.run_unit_tests >>
       steps:
-        - circleci-tools/buildtests:
+        - buildtests:
             repo: << parameters.repo >>
             rebuild_procs: << parameters.rebuild_procs >>
-        - circleci-tools/runtests:
+        - runtests:
             repo: << parameters.repo >>
             ctest_options: << parameters.ctest_options >>
-  - circleci-tools/compress_artifacts
+  - compress_artifacts
   - store_artifacts:
       path: /logfiles
