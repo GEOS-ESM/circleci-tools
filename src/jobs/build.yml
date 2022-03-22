@@ -62,6 +62,8 @@ executor:
   name: << parameters.compiler >>
   resource_class: << parameters.resource_class >>
 
+working_directory: /root/project
+
 steps:
   - versions:
       compiler: << parameters.compiler >>
