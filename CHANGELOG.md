@@ -16,7 +16,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
-- Add ability to pass in develop branches to mepodevelop command
+- Add ability to pass in subrepos to mepodevelop command
 
 ## [0.14.5] - 2021-03-22
 

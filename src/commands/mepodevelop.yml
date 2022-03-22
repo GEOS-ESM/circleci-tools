@@ -5,15 +5,15 @@ parameters:
     description: "Name of repository"
     type: string
     default: GEOSgcm
-  branch:
-    description: "Name of branches to run mepo develop on"
+  subrepos:
+    description: "Name of subrepos to run mepo develop on"
     type: string
     default: "GEOSgcm_GridComp GEOSgcm_App GMAO_Shared"
 
 steps:
   - run:
-      name: "Mepo develop GEOSgcm_GridComp GEOSgcm_App GMAO_Shared"
+      name: "Mepo develop << parameters.subrepos >>"
       command: |
         cd ${CIRCLE_WORKING_DIRECTORY}/<< parameters.repo >>
-        mepo develop << parameters.branch >>
+        mepo develop << parameters.subrepos >>
         mepo status
