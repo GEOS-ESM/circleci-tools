@@ -12,6 +12,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Removed
 
+## [0.14.4] - 2021-03-22
+
+### Fixed
+
+- Add working_directory to build job
+
 ## [0.14.3] - 2021-03-22
 
 ### Fixed
