@@ -101,6 +101,7 @@ steps:
         - checkout_if_exists:
             repo: << parameters.repo >>
   - cmake:
+      repo: << parameters.repo >>
       compiler: << parameters.compiler >>
       build_type: << parameters.build_type >>
       extra_cmake_options: << parameters.extra_cmake_options >>
