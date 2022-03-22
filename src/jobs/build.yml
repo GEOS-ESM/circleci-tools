@@ -70,7 +70,7 @@ steps:
       condition: << parameters.fixture >>
       steps:
         - checkout_fixture:
-            repo: << parameters.repo >>
+            repo: << parameters.fixture >>
   # else we use the normal checkout
   - unless:
       condition: << parameters.fixture >>
