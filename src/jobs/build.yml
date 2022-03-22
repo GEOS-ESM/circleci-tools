@@ -16,10 +16,10 @@ parameters:
     default: large
     description: "Resource class to use"
     enum: ["medium", "large", "xlarge"]
-  fixture:
-    type: string
-    default: ""
-    description: "Name of the fixture to checkout"
+  checkout_fixture:
+    type: boolean
+    default: false
+    description: "Use custom checkout"
   fixture_branch:
     type: string
     default: ""
@@ -67,13 +67,13 @@ steps:
       compiler: << parameters.compiler >>
   # If we have to checkout a fixture, do that...
   - when:
-      condition: << parameters.fixture >>
+      condition: << parameters.checkout_fixture >>
       steps:
         - checkout_fixture:
-            repo: << parameters.fixture >>
+            repo: << parameters.repo >>
   # else we use the normal checkout
   - unless:
-      condition: << parameters.fixture >>
+      condition: << parameters.repo >>
       steps:
         - checkout:
             path: << parameters.repo >>
