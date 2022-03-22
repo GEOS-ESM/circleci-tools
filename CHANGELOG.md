@@ -12,6 +12,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Removed
 
+## [0.14.0] - 2021-03-22
+
+### Added
+
+- Added new `build` job
+- Added `buildtests` and `runtests` commands
+- Added example
+
 ## [0.13.0] - 2021-03-14
 
 ### Added
