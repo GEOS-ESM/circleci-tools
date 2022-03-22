@@ -12,6 +12,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Removed
 
+## [0.14.2] - 2021-03-22
+
+### Fixed
+
+- Fix *another* bug in fixture handling in build job
+
 ## [0.14.1] - 2021-03-22
 
 ### Fixed
