@@ -12,6 +12,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Removed
 
+## [1.1.0] - 2021-03-23
+
+### Added
+
+- Added ability to checkout mapl3 branches in build job
+
 ## [1.0.0] - 2021-03-23
 
 ### Changed

@@ -69,6 +69,10 @@ parameters:
     description: "Workspace root"
     type: string
     default: "workspace"
+  checkout_mapl3_release_branch:
+    description: "Checkout release/MAPL-v3 branches"
+    type: boolean
+    default: false
 
 executor:
   name: << parameters.compiler >>
@@ -105,6 +109,11 @@ steps:
         - mepodevelop:
             repo: << parameters.repo >>
             subrepos: << parameters.develop_repos >>
+  - when:
+      condition: << parameters.checkout_mapl3_release_branch >>
+      steps:
+        - checkout_mapl3_release_branch:
+            repo: << parameters.repo >>
   - when:
       condition: << parameters.checkout_mapl_branch >>
       steps:
