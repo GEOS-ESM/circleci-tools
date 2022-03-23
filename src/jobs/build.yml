@@ -69,10 +69,6 @@ parameters:
     description: "Workspace root"
     type: string
     default: "workspace"
-  workspace_paths:
-    description: "Path(s) to persist in workspace"
-    type: string
-    default: "install-GEOSgcm"
 
 executor:
   name: << parameters.compiler >>
@@ -142,7 +138,7 @@ steps:
       steps:
         - persist_to_workspace:
             root: << parameters.workspace_root >>
-            paths: << parameters.workspace_paths >>
+            paths: install-<< parameters.repo >>
   - compress_artifacts
   - store_artifacts:
       path: /logfiles

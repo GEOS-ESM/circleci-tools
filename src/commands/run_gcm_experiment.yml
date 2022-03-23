@@ -1,0 +1,37 @@
+description: "Run GCM Experiment"
+
+parameters:
+  repo:
+    description: "Name of repository"
+    type: string
+    default: GEOSgcm
+  workspace_root:
+    description: "Root of workspace"
+    type: string
+    default: workspace
+  gcm_experiment_name:
+    description: "Name of experiment"
+    type: string
+    default: test-gcm
+
+steps:
+  - run:
+      name: "Run gcm.j"
+      command: |
+        mkdir -p /logfiles
+        cd ${CIRCLE_WORKING_DIRECTORY}/<< parameters.workspace_root >>/<< parameters.gcm_experiment_name >>
+        ./gcm_run.j |& tee /logfiles/gcm_run.log
+  - run:
+      name: "Check for EGRESS"
+      command: |
+        cd ${CIRCLE_WORKING_DIRECTORY}/<< parameters.workspace_root >>/<< parameters.gcm_experiment_name >>
+
+        SCRDIR=$(find . -type d -name 'scratch*')
+
+        if [[ -f $SCRDIR/EGRESS ]]
+        then
+            echo "EGRESS found!"
+        else
+            echo "EGRESS not found!"
+            exit 1
+        fi

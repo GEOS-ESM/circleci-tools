@@ -1,0 +1,22 @@
+description: "Run makeoneday script"
+
+parameters:
+  repo:
+    description: "Name of repository"
+    type: string
+    default: GEOSgcm
+  workspace_root:
+    description: "Root of workspace"
+    type: string
+    default: workspace
+  gcm_experiment_name:
+    description: "Name of experiment"
+    type: string
+    default: test-gcm
+
+steps:
+  - run:
+      name: "Run makeoneday"
+      command: |
+        cd ${CIRCLE_WORKING_DIRECTORY}/<< parameters.workspace_root >>/<< parameters.gcm_experiment_name >>
+        /TinyBCs-GitV10/scripts/makeoneday.bash 6hr nxy 1 6
