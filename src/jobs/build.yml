@@ -52,7 +52,7 @@ parameters:
   mepodevelop:
     description: "Run mepo develop"
     type: boolean
-    default: false
+    default: true
   develop_repos:
     description: "Repos to run mepo develop on"
     type: string
