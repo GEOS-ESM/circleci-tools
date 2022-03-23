@@ -1,0 +1,49 @@
+description: "Run fv3_setup"
+
+parameters:
+  repo:
+    description: "Name of repository"
+    type: string
+    default: GEOSgcm
+  workspace_root:
+    description: "Root of workspace"
+    type: string
+    default: workspace
+  fv3_experiment_name:
+    description: "Name of experiment"
+    type: string
+    default: test-fv3
+  fv3_horz_resolution:
+    description: "Horizontal resolution for FV3 Standalone"
+    type: integer
+    default: 12
+  fv3_vert_resolution:
+    description: "Vertical resolution for FV3 Standalone"
+    type: integer
+    default: 72
+
+steps:
+  - run:
+      name: "Run fv3_setup"
+      command: |
+        cd ${CIRCLE_WORKING_DIRECTORY}/<< parameters.workspace_root >>/install-<< parameters.repo >>/bin
+
+        INPUT_FOR_SETUP=$(cat \<<END_HEREDOC
+        << parameters.fv3_experiment_name >>
+        << parameters.fv3_experiment_name >>
+        << parameters.fv3_horz_resolution >>
+        << parameters.fv3_vert_resolution >>
+        NO
+        NO
+        ${CIRCLE_WORKING_DIRECTORY}/<< parameters.workspace_root >>/<< parameters.fv3_experiment_name >>
+        NULL
+        END_HEREDOC
+        )
+        echo "$INPUT_FOR_SETUP" > /tmp/input.txt
+
+        cat /tmp/input.txt | ./fv3_setup
+  - run:
+      name: "Change FV_NX, FV_NY, and RUN_CMD"
+      command: |
+        cd ${CIRCLE_WORKING_DIRECTORY}/<< parameters.workspace_root >>/<< parameters.fv3_experiment_name >>
+        sed -i.bak -e '/set FV_NX/ s/\([0-9]\+\)/1/' -e '/set FV_NY/ s/\([0-9]\+\)/6/' -e '/set RUN_CMD/ c\set RUN_CMD = "mpirun -np "' fv3.j

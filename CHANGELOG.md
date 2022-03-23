@@ -12,6 +12,20 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Removed
 
+## [0.18.0] - 2021-03-23
+
+### Added
+
+- Commands
+  - run_fv3_setup
+  - run_fv3_experiment
+  - create_gcm_expt
+  - run_makeoneday
+  - run_gcm_experiment
+- Jobs
+  - run_fv3
+  - run gcm
+
 ## [0.17.0] - 2021-03-23
 
 ### Added

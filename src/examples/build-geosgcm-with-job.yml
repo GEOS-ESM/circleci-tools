@@ -1,0 +1,19 @@
+description: |
+  Build the GEOSgcm using the `build` job in this orb
+
+usage:
+  version: 2.1
+  orbs:
+    ci: geos-esm/circleci-tools@x.y # Refers to the version of the orb, not GEOSgcm
+  workflows:
+    build-test:
+      jobs:
+        - ci/build:
+            name: build-GEOSgcm-on-<< matrix.compiler >>
+            matrix:
+              parameters:
+                compiler: [gfortran, ifort]
+            repo: GEOSgcm
+            checkout_fixture: true
+            context:
+              - docker-hub-creds

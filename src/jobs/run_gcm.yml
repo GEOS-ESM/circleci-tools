@@ -1,0 +1,61 @@
+description: >
+  Run GCM experiment
+
+parameters:
+  repo:
+    type: string
+    default: GEOSgcm
+    description: "Name of the repo to act upon"
+  compiler:
+    type: enum
+    default: ifort
+    description: "Compiler to use"
+    enum: ["ifort", "gfortran"]
+  resource_class:
+    type: enum
+    default: xlarge
+    description: "Resource class to use"
+    enum: ["medium", "large", "xlarge"]
+  workspace_root:
+    description: "Workspace root"
+    type: string
+    default: workspace
+  gcm_experiment_name:
+    description: "Name of experiment"
+    type: string
+    default: test-gcm
+  gcm_horz_resolution:
+    description: "Horizontal resolution for gcm experiment"
+    type: string
+    default: c12
+  gcm_vert_resolution:
+    description: "Vertical resolution for gcm experiment"
+    type: integer
+    default: 72
+
+executor:
+  name: << parameters.compiler >>
+  resource_class: << parameters.resource_class >>
+
+working_directory: /root/project
+
+steps:
+  - attach_workspace:
+      at: << parameters.workspace_root >>
+  - create_gcm_expt:
+      repo: << parameters.repo >>
+      workspace_root: << parameters.workspace_root >>
+      gcm_experiment_name: << parameters.gcm_experiment_name >>
+      gcm_horz_resolution: << parameters.gcm_horz_resolution >>
+      gcm_vert_resolution: << parameters.gcm_vert_resolution >>
+  - run_makeoneday:
+      repo: << parameters.repo >>
+      workspace_root: << parameters.workspace_root >>
+      gcm_experiment_name: << parameters.gcm_experiment_name >>
+  - run_gcm_experiment:
+      repo: << parameters.repo >>
+      workspace_root: << parameters.workspace_root >>
+      gcm_experiment_name: << parameters.gcm_experiment_name >>
+  - compress_artifacts
+  - store_artifacts:
+      path: /logfiles

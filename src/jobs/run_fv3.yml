@@ -1,0 +1,57 @@
+description: >
+  Run FV3 standalone experiment
+
+parameters:
+  repo:
+    type: string
+    default: GEOSgcm
+    description: "Name of the repo to act upon"
+  compiler:
+    type: enum
+    default: ifort
+    description: "Compiler to use"
+    enum: ["ifort", "gfortran"]
+  resource_class:
+    type: enum
+    default: large
+    description: "Resource class to use"
+    enum: ["medium", "large", "xlarge"]
+  workspace_root:
+    description: "Workspace root"
+    type: string
+    default: workspace
+  fv3_experiment_name:
+    description: "Name of experiment"
+    type: string
+    default: test-fv3
+  fv3_horz_resolution:
+    description: "Horizontal resolution for FV3 Standalone"
+    type: integer
+    default: 12
+  fv3_vert_resolution:
+    description: "Vertical resolution for FV3 Standalone"
+    type: integer
+    default: 72
+
+executor:
+  name: << parameters.compiler >>
+  resource_class: << parameters.resource_class >>
+
+working_directory: /root/project
+
+steps:
+  - attach_workspace:
+      at: << parameters.workspace_root >>
+  - run_fv3_setup:
+      repo: << parameters.repo >>
+      workspace_root: << parameters.workspace_root >>
+      fv3_experiment_name: << parameters.fv3_experiment_name >>
+      fv3_horz_resolution: << parameters.fv3_horz_resolution >>
+      fv3_vert_resolution: << parameters.fv3_vert_resolution >>
+  - run_fv3_experiment:
+      repo: << parameters.repo >>
+      workspace_root: << parameters.workspace_root >>
+      fv3_experiment_name: << parameters.fv3_experiment_name >>
+  - compress_artifacts
+  - store_artifacts:
+      path: /logfiles
