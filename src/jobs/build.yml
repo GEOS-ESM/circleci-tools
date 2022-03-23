@@ -66,8 +66,7 @@ executor:
   name: << parameters.compiler >>
   resource_class: << parameters.resource_class >>
 
-context:
-  - docker-hub-creds
+context: docker-hub-creds
 
 working_directory: /root/project
 
