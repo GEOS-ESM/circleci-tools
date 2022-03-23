@@ -12,6 +12,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Removed
 
+## [0.17.0] - 2021-03-23
+
+### Added
+
+- Add persist_workspace step to build job
+
 ## [0.16.0] - 2021-03-23
 
 ### Changed

@@ -61,6 +61,18 @@ parameters:
     description: "Checkout MAPL branch"
     type: boolean
     default: false
+  persist_workspace:
+    description: "Persist the workspace?"
+    type: boolean
+    default: false
+  workspace_root:
+    description: "Workspace root"
+    type: string
+    default: "workspace"
+  workspace_paths:
+    description: "Path(s) to persist in workspace"
+    type: string
+    default: "install-GEOSgcm"
 
 executor:
   name: << parameters.compiler >>
@@ -125,6 +137,12 @@ steps:
         - runtests:
             repo: << parameters.repo >>
             ctest_options: << parameters.ctest_options >>
+  - when:
+      condition: << parameters.persist_workspace >>
+      steps:
+        - persist_to_workspace:
+            root: << parameters.workspace_root >>
+            paths: << parameters.workspace_paths >>
   - compress_artifacts
   - store_artifacts:
       path: /logfiles
