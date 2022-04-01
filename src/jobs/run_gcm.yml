@@ -1,5 +1,5 @@
 description: >
-  Run GCM experiment
+  Run GCM experiment. This is a 1-hour 1x6 job with no ExtData (due to memory concerns)
 
 parameters:
   repo:
