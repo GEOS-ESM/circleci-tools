@@ -11,7 +11,7 @@ parameters:
     default: ifort
     description: "Compiler to use"
   executor_name:
-    type: executor
+    type: string
     default: "<< parameters.compiler >>-bcs"
     description: "Executor to use"
   resource_class:
