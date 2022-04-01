@@ -1,4 +1,4 @@
-description: "Run makeoneday script"
+description: "Make geosgcm_prog collection hourly"
 
 parameters:
   repo:
@@ -16,7 +16,7 @@ parameters:
 
 steps:
   - run:
-      name: "Run makeoneday"
+      name: "Set geosgcm_prog history to 1 hour frequency"
       command: |
         cd ${CIRCLE_WORKING_DIRECTORY}/<< parameters.workspace_root >>/<< parameters.gcm_experiment_name >>
-        /TinyBCs-GitV10/scripts/makeoneday.bash 1hr nxy 1 6 noext
+        sed -i.bak '/geosgcm_prog.frequency/ s/6/1/' HISTORY.rc

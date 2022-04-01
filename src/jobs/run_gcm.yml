@@ -52,6 +52,10 @@ steps:
       repo: << parameters.repo >>
       workspace_root: << parameters.workspace_root >>
       gcm_experiment_name: << parameters.gcm_experiment_name >>
+  - make_onehour_history:
+      repo: << parameters.repo >>
+      workspace_root: << parameters.workspace_root >>
+      gcm_experiment_name: << parameters.gcm_experiment_name >>
   - run_gcm_experiment:
       repo: << parameters.repo >>
       workspace_root: << parameters.workspace_root >>
