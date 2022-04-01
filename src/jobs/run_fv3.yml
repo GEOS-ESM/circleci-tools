@@ -12,7 +12,7 @@ parameters:
     description: "Compiler to use"
     enum: ["ifort", "gfortran"]
   executor_name:
-    type: string
+    type: executor
     default: << parameters.compiler >>
     description: "Executor to use"
   resource_class:
