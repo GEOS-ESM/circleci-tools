@@ -75,7 +75,7 @@ parameters:
     default: false
 
 executor:
-  name: << parameters.compiler >>
+  name: << parameters.compiler >>-bcs
   resource_class: << parameters.resource_class >>
 
 working_directory: /root/project
