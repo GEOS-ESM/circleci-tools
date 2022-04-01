@@ -12,6 +12,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Removed
 
+## [1.2.0] - 2021-04-01
+
+### Fixed
+
+- Use the bcs executors for GCM run jobs
+
+### Changed
+
+- Persist fewer install directories
+
 ## [1.1.0] - 2021-03-23
 
 ### Added

@@ -147,7 +147,10 @@ steps:
       steps:
         - persist_to_workspace:
             root: << parameters.workspace_root >>
-            paths: install-<< parameters.repo >>
+            paths:
+              - install-<< parameters.repo >>/bin
+              - install-<< parameters.repo >>/lib
+              - install-<< parameters.repo >>/etc
   - compress_artifacts
   - store_artifacts:
       path: /logfiles
