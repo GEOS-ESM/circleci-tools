@@ -7,13 +7,12 @@ parameters:
     default: GEOSgcm
     description: "Name of the repo to act upon"
   compiler:
-    type: enum
+    type: string
     default: ifort
     description: "Compiler to use"
-    enum: ["ifort", "gfortran"]
   executor_name:
     type: executor
-    default: << parameters.compiler >>
+    default: "<< parameters.compiler >>"
     description: "Executor to use"
   resource_class:
     type: enum
