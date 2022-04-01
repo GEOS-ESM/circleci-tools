@@ -7,7 +7,7 @@ parameters:
     default: GEOSgcm
     description: "Name of the repo to act upon"
   compiler:
-    type: strin
+    type: string
     default: ifort
     description: "Compiler to use"
   executor_name:
