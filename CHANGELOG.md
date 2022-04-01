@@ -12,6 +12,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Removed
 
+## [1.3.0] - 2021-04-1
+
+### Added
+
+- Added `executor_name` as an option to jobs
+
+### Changed
+
+- Updated jobs to use `executor_name`
+
 ## [1.2.0] - 2021-04-01
 
 ### Fixed

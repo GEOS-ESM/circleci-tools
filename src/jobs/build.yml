@@ -11,6 +11,11 @@ parameters:
     default: ifort
     description: "Compiler to use"
     enum: ["ifort", "gfortran"]
+  executor_name:
+    type: enum
+    default: << parameters.compiler >>
+    description: "Executor to use"
+    enum: ["ifort", "gfortran", "ifort-bcs", "gfortran-bcs"]
   resource_class:
     type: enum
     default: large
@@ -75,7 +80,7 @@ parameters:
     default: false
 
 executor:
-  name: << parameters.compiler >>
+  name: << parameters.executor_name >>
   resource_class: << parameters.resource_class >>
 
 working_directory: /root/project
