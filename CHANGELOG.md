@@ -12,6 +12,19 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Removed
 
+## [1.5.0] - 2021-04-01
+
+### Added
+
+- Added `make_onehour_history` command
+
+### Changed
+
+- Changed GCM experiment
+  - Runs for 1 hour
+  - geosgcm_prog frequency is set to 1 hour (via sed)
+  - ExtData is turned off as it seems to use too much memory
+
 ## [1.4.0] - 2021-04-01
 
 ### Changed
