@@ -12,6 +12,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Removed
 
+## [1.4.0] - 2021-04-01
+
+### Changed
+
+- Revert back to just bcs image for run
+
 ## [1.3.0] - 2021-04-01
 
 ### Changed

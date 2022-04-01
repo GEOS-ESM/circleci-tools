@@ -34,7 +34,7 @@ parameters:
     default: 72
 
 executor:
-  name: << parameters.compiler >>-bcs
+  name: << parameters.compiler >>
   resource_class: << parameters.resource_class >>
 
 working_directory: /root/project
