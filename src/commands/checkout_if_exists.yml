@@ -16,7 +16,15 @@ steps:
         then
            mepo checkout-if-exists ${CIRCLE_BRANCH}
         else
-           mepo checkout ${CIRCLE_BRANCH} ${CIRCLE_PROJECT_REPONAME}
+           if [ "${CIRCLE_PROJECT_REPONAME}" == "ESMA_cmake" ]
+           then
+              mepo checkout ${CIRCLE_BRANCH} cmake
+           elif [ "${CIRCLE_PROJECT_REPONAME}" == "ESMA_env" ]
+           then
+              mepo checkout ${CIRCLE_BRANCH} env
+           else
+              mepo checkout ${CIRCLE_BRANCH} ${CIRCLE_PROJECT_REPONAME}
+           fi
         fi
         mepo status
 

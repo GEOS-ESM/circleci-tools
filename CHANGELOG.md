@@ -12,6 +12,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Removed
 
+## [1.5.1] - 2021-04-11
+
+### Fixed
+
+- Fixed bug with handling of ESMA_cmake and ESMA_env in `checkout-if-exists`
+
 ## [1.5.0] - 2021-04-01
 
 ### Added
