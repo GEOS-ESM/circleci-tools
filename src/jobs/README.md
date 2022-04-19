@@ -8,21 +8,11 @@ Jobs may invoke orb commands and other steps to fully automate tasks with minima
 
 View the included _[hello.yml](./hello.yml)_ example.
 
+We currently have three jobs:
 
-```yaml
-  # What will this job do?
-  # Descriptions should be short, simple, and clear.
-  Sample description
-executor: default
-parameters:
-  greeting:
-    type: string
-    default: "Hello"
-    description: "Select a proper greeting"
-steps:
-  - greet:
-      greeting: << parameters.greeting >>
-```
+1. [build yml](./build.yml): Job used to build repos
+2. [run_gcm yml](./run_gcm.yml): Runs a 1-hour 1x6 GCM with no ExtData
+3. [run_fv3 yml](./run_fv3.yml): Runs a 6-hour FV3 standalone
 
 ## See:
  - [Orb Author Intro](https://circleci.com/docs/2.0/orb-author-intro/#section=configuration)

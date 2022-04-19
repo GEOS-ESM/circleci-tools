@@ -8,7 +8,10 @@ CircleCI jobs. We currently define two executors:
 
 These are named to match the Fortran compiler.
 
-They have on optional parameter `resource_class` which is default to `large`
+They have on two optional parameters:
+
+1. `resource_class` which defaults to `large`
+2. `baselibs_version` which defaults to `v6.2.13`
 
 ## See:
  - [Orb Author Intro](https://circleci.com/docs/2.0/orb-author-intro/#section=configuration)
