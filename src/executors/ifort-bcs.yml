@@ -6,9 +6,13 @@ parameters:
     description: "Resource class to use"
     default: large
     type: string
+  baselibs_version:
+    description: "Version of Baselibs to use"
+    default: v6.2.13
+    type: string
 
 docker:
-  - image: gmao/ubuntu20-geos-env-bcs:v6.2.13-intelmpi_2021.3.0-intel_2021.3.0-bcs_v10.22.0
+  - image: gmao/ubuntu20-geos-env-bcs:<< parameters.baselibs_version >>-intelmpi_2021.3.0-intel_2021.3.0-bcs_v10.22.0
     auth:
       username: $DOCKERHUB_USER
       password: $DOCKERHUB_AUTH_TOKEN

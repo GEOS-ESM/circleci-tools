@@ -12,6 +12,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Removed
 
+## [1.6.0] - 2022-04-19
+
+### Changed
+
+- Added ability to pass in baselibs version to executors
+
 ## [1.5.2] - 2022-04-11
 
 ### Fixed
