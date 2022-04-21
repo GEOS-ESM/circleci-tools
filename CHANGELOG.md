@@ -12,6 +12,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Removed
 
+## [1.6.1] - 2022-04-21
+
+### Fixes
+
+- Extend `baselibs_version` to jobs
+
 ## [1.6.0] - 2022-04-19
 
 ### Changed
