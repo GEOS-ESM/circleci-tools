@@ -20,6 +20,10 @@ parameters:
     type: string
     default: v6.2.13
     description: "Baselibs version to use"
+  bcs_version:
+    type: string
+    default: v10.22.1
+    description: "Boundary condition version to use"
   workspace_root:
     description: "Workspace root"
     type: string
@@ -41,6 +45,7 @@ executor:
   name: << parameters.compiler >>-bcs
   resource_class: << parameters.resource_class >>
   baselibs_version: << parameters.baselibs_version >>
+  bcs_version: << parameters.bcs_version >>
 
 working_directory: /root/project
 
