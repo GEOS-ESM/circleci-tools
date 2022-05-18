@@ -12,6 +12,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Removed
 
+## [1.7.0] - 2022-05-18
+
+### Fixes
+
+- Add ability to pass in `bcs_version` to jobs and executors
+
 ## [1.6.1] - 2022-04-21
 
 ### Fixes
