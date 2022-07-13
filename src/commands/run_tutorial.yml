@@ -1,0 +1,35 @@
+description: "Run MAPL Tutorial"
+
+parameters:
+  repo:
+    description: "Name of repository"
+    type: string
+    default: MAPL
+  workspace_root:
+    description: "Root of workspace"
+    type: string
+    default: workspace
+  tutorial_name:
+    description: "Name of experiment"
+    type: string
+
+steps:
+  - run:
+      name: "Run << parameters.tutorial_name >>"
+      command: |
+        mkdir -p /logfiles
+        mkdir ${CIRCLE_WORKING_DIRECTORY}/<< parameters.workspace_root >>/<< parameters.tutorial_name >>
+        cd ${CIRCLE_WORKING_DIRECTORY}/<< parameters.workspace_root >>/<< parameters.tutorial_name >>
+        ${CIRCLE_WORKING_DIRECTORY}/<< parameters.workspace_root >>/install-<< parameters.repo >>/bin/run_tutorial_case.sh ${CIRCLE_WORKING_DIRECTORY}/<< parameters.workspace_root >>/install-<< parameters.repo >> << parameters.tutorial_name >> |& tee /logfiles/<< parameters.tutorial_name >>.log
+  - run:
+      name: "Check for EGRESS"
+      command: |
+        cd ${CIRCLE_WORKING_DIRECTORY}/<< parameters.workspace_root >>/<< parameters.tutorial_name >>
+
+        if [[ -f EGRESS ]]
+        then
+            echo "EGRESS found!"
+        else
+            echo "EGRESS not found!"
+            exit 1
+        fi
