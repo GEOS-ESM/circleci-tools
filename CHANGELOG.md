@@ -12,6 +12,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Removed
 
+## [1.8.1] - 2022-07-13
+
+### Fixed
+
+- Fixed description of tutorial job
+
 ## [1.8.0] - 2022-07-13
 
 ### Added
