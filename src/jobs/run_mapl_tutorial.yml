@@ -1,5 +1,5 @@
 description: >
-  Run FV3 standalone experiment
+  Run MAPL Tutorial
 
 parameters:
   repo:
