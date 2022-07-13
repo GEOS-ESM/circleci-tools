@@ -1,0 +1,47 @@
+description: >
+  Run FV3 standalone experiment
+
+parameters:
+  repo:
+    type: string
+    default: MAPL
+    description: "Name of the repo to act upon"
+  compiler:
+    type: enum
+    default: ifort
+    description: "Compiler to use"
+    enum: ["ifort", "gfortran"]
+  resource_class:
+    type: enum
+    default: medium
+    description: "Resource class to use"
+    enum: ["medium", "large", "xlarge"]
+  baselibs_version:
+    type: string
+    default: v6.2.13
+    description: "Baselibs version to use"
+  workspace_root:
+    description: "Workspace root"
+    type: string
+    default: workspace
+  tutorial_name:
+    description: "Name of tutorial"
+    type: string
+
+executor:
+  name: << parameters.compiler >>
+  resource_class: << parameters.resource_class >>
+  baselibs_version: << parameters.baselibs_version >>
+
+working_directory: /root/project
+
+steps:
+  - attach_workspace:
+      at: << parameters.workspace_root >>
+  - run_tutorial:
+      repo: << parameters.repo >>
+      workspace_root: << parameters.workspace_root >>
+      tutorial_name: << parameters.tutorial_name >>
+  - compress_artifacts
+  - store_artifacts:
+      path: /logfiles
