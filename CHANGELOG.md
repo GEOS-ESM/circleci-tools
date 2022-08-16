@@ -12,6 +12,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Removed
 
+## [1.9.0] - 2022-08-16
+
+### Changed
+
+- Updated executors defaults to
+  - GCC 12.1.0, Open MPI 4.1.4
+  - Intel 2022.1.0, Intel MPI 2021.6.0
+  - Baselibs v7.5.0
+  - v10.22.5 boundary conditions
+
 ## [1.8.1] - 2022-07-13
 
 ### Fixed
