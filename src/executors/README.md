@@ -12,11 +12,7 @@ They have on two optional parameters:
 
 1. `resource_class` which defaults to `large`
 2. `baselibs_version` which defaults to `v7.5.0`
-3. `gcc_version` which defaults to `12.1.0`
-4. `openmpi_version` which defaults to `4.1.4`
-5. `intel_version` which defaults to `2022.1.0`
-6. `intelmpi_version` which defaults to `2021.6.0`
-7. `bcs_version` which defaults to `v10.22.4`
+3. `bcs_version` which defaults to `v10.22.5`
 
 ## See:
  - [Orb Author Intro](https://circleci.com/docs/2.0/orb-author-intro/#section=configuration)

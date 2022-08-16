@@ -20,22 +20,6 @@ parameters:
     type: string
     default: v7.5.0
     description: "Baselibs version to use"
-  gcc_version:
-    description: "Version of GNU compiler to use"
-    default: 12.1.0
-    type: string
-  openmpi_version:
-    description: "Version of Open MPI to use"
-    default: 4.1.4
-    type: string
-  intel_version:
-    description: "Version of Intel compiler to use"
-    default: 2022.1.0
-    type: string
-  intelmpi_version:
-    description: "Version of Intel MPI to use"
-    default: 2021.6.0
-    type: string
   checkout_fixture:
     type: boolean
     default: false
@@ -98,10 +82,6 @@ executor:
   name: << parameters.compiler >>
   resource_class: << parameters.resource_class >>
   baselibs_version: << parameters.baselibs_version >>
-  gcc_version: << parameters.gcc_version >>
-  openmpi_version: << parameters.openmpi_version >>
-  intel_version: << parameters.intel_version >>
-  intelmpi_version: << parameters.intelmpi_version >>
 
 working_directory: /root/project
 

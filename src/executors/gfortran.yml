@@ -10,17 +10,9 @@ parameters:
     description: "Version of Baselibs to use"
     default: v7.5.0
     type: string
-  gcc_version:
-    description: "Version of GNU compiler to use"
-    default: 12.1.0
-    type: string
-  openmpi_version:
-    description: "Version of Open MPI to use"
-    default: 4.1.4
-    type: string
 
 docker:
-  - image: gmao/ubuntu20-geos-env-mkl:<< parameters.baselibs_version >>-openmpi_<< parameters.openmpi_version >>-gcc_<< parameters.gcc_version >>
+  - image: gmao/ubuntu20-geos-env-mkl:<< parameters.baselibs_version >>-openmpi_4.1.4-gcc_12.1.0
     auth:
       username: $DOCKERHUB_USER
       password: $DOCKERHUB_AUTH_TOKEN
