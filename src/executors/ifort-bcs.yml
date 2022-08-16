@@ -1,5 +1,5 @@
 description: >
-  GEOS-ESM ifort docker executor
+  GEOS-ESM ifort docker executor with boundary conditions
 
 parameters:
   resource_class:
@@ -8,15 +8,23 @@ parameters:
     type: string
   baselibs_version:
     description: "Version of Baselibs to use"
-    default: v6.2.13
+    default: v7.5.0
     type: string
   bcs_version:
     description: "Version of boundary conditions to use"
-    default: v10.22.1
+    default: v10.22.5
+    type: string
+  intel_version:
+    description: "Version of Intel compiler to use"
+    default: 2022.1.0
+    type: string
+  intelmpi_version:
+    description: "Version of Intel MPI to use"
+    default: 2021.6.0
     type: string
 
 docker:
-  - image: gmao/ubuntu20-geos-env-bcs:<< parameters.baselibs_version >>-intelmpi_2021.3.0-intel_2021.3.0-bcs_<< parameters.bcs_version >>
+  - image: gmao/ubuntu20-geos-env-bcs:<< parameters.baselibs_version >>-intelmpi_<< parameters.intelmpi_version >>-intel_<< parameters.intel_version >>-bcs_<< parameters.bcs_version >>
     auth:
       username: $DOCKERHUB_USER
       password: $DOCKERHUB_AUTH_TOKEN

@@ -18,11 +18,27 @@ parameters:
     enum: ["medium", "large", "xlarge"]
   baselibs_version:
     type: string
-    default: v6.2.13
+    default: v7.5.0
     description: "Baselibs version to use"
+  gcc_version:
+    description: "Version of GNU compiler to use"
+    default: 12.1.0
+    type: string
+  openmpi_version:
+    description: "Version of Open MPI to use"
+    default: 4.1.4
+    type: string
+  intel_version:
+    description: "Version of Intel compiler to use"
+    default: 2022.1.0
+    type: string
+  intelmpi_version:
+    description: "Version of Intel MPI to use"
+    default: 2021.6.0
+    type: string
   bcs_version:
     type: string
-    default: v10.22.1
+    default: v10.22.5
     description: "Boundary condition version to use"
   workspace_root:
     description: "Workspace root"
@@ -45,6 +61,10 @@ executor:
   name: << parameters.compiler >>-bcs
   resource_class: << parameters.resource_class >>
   baselibs_version: << parameters.baselibs_version >>
+  gcc_version: << parameters.gcc_version >>
+  openmpi_version: << parameters.openmpi_version >>
+  intel_version: << parameters.intel_version >>
+  intelmpi_version: << parameters.intelmpi_version >>
   bcs_version: << parameters.bcs_version >>
 
 working_directory: /root/project
