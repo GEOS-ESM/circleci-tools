@@ -16,7 +16,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
-- Migrated to orb-tools v11.0.0
+- Migrated to orb-tools v11
 
 ## [1.9.0] - 2022-08-16
 
