@@ -1,6 +1,6 @@
 version: 2.1
 orbs:
-  circleci-tools: GEOS-ESM/circleci-tools@dev:<<pipeline.git.revision>>
+  circleci-tools: geos-esm/circleci-tools@dev:<<pipeline.git.revision>>
   orb-tools: circleci/orb-tools@11.1
 filters: &filters
   tags:
@@ -25,7 +25,7 @@ workflows:
       - orb-tools/pack:
           filters: *filters
       - orb-tools/publish:
-          orb-name: GEOS-ESM/circleci-tools
+          orb-name: geos-esm/circleci-tools
           vcs-type: << pipeline.project.type >>
           pub-type: production
           requires:
