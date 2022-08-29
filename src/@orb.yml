@@ -1,7 +1,8 @@
 version: 2.1
 
-description: >
-  Collection of commands used in GEOS-ESM CI
+description: |
+  An orb used in GEOS-ESM CI.
+  This orb contains various executors, commands, and jobs used in the CI testing of GEOS-ESM repositories.
 
 # This information will be displayed in the orb registry and is not mandatory.
 display:

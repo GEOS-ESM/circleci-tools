@@ -1,3 +1,5 @@
+#!/bin/bash
+
 Greet() {
     echo Hello "${PARAM_TO}"
 }
