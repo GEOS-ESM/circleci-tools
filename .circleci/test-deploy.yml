@@ -20,8 +20,8 @@ workflows:
   test-deploy:
     jobs:
       # Make sure to include "filters: *filters" in every test job you want to run as part of your deployment.
-      #- command-tests:
-         #filters: *filters
+      - integration-test-1:
+         filters: *filters
       - orb-tools/pack:
           filters: *filters
       - orb-tools/publish:
@@ -30,7 +30,7 @@ workflows:
           pub-type: production
           requires:
             - orb-tools/pack
-            - command-tests
+            - integration-test-1
           context: orb-publishing
           filters:
             branches:
