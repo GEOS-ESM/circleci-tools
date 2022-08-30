@@ -36,6 +36,12 @@ parameters:
     description: "Vertical resolution for FV3 Standalone"
     type: integer
     default: 72
+  # This is a dummy needed for matrix use in builds
+  fv_precision:
+    type: enum
+    default: ""
+    description: "Precision to build FV3"
+    enum: ["", "R4", "R8", "R4R8"]
 
 executor:
   name: << parameters.compiler >>
