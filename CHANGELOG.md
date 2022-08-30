@@ -8,6 +8,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
+- Add ability to pass `fv_precision` into builds
+
 ### Changed
 
 - Update `README.md` to reflect v11 orb-tools workflow

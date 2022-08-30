@@ -18,13 +18,27 @@ parameters:
     description: Extra options to pass to CMake
     type: string
     default: ""
+  fv_precision:
+    description: Precision to build FV3
+    type: enum
+    default: ""
+    enum: ["", "R4", "R8", "R4R8"]
 
 steps:
   - run:
-      name: "Run CMake"
+      name: "Make build directories"
       command: |
         mkdir -p /logfiles
         cd ${CIRCLE_WORKING_DIRECTORY}/<< parameters.repo >>
         mkdir -p ${CIRCLE_WORKING_DIRECTORY}/workspace/build-<< parameters.repo >>
+
+      name: "Run CMake with FV_PRECISION=<< parameters.fv_precision>>"
+      when: << parameters.fv_precision >>
+      command: |
+        cd ${CIRCLE_WORKING_DIRECTORY}/workspace/build-<< parameters.repo >>
+        cmake ${CIRCLE_WORKING_DIRECTORY}/<< parameters.repo >> -DBASEDIR=$BASEDIR/Linux -DCMAKE_Fortran_COMPILER=<< parameters.compiler >> -DCMAKE_BUILD_TYPE=<< parameters.build_type >> -DUSE_F2PY=OFF -DMPIEXEC_PREFLAGS=${MPIEXEC_PREFLAGS} -DCMAKE_INSTALL_PREFIX=${CIRCLE_WORKING_DIRECTORY}/workspace/install-<< parameters.repo >> << parameters.extra_cmake_options >> -DFV_PRECISION=<< parameters.fv_precision >> |& tee /logfiles/cmake.log
+      name: "Run CMake"
+      unless: << parameters.fv_precision >>
+      command: |
         cd ${CIRCLE_WORKING_DIRECTORY}/workspace/build-<< parameters.repo >>
         cmake ${CIRCLE_WORKING_DIRECTORY}/<< parameters.repo >> -DBASEDIR=$BASEDIR/Linux -DCMAKE_Fortran_COMPILER=<< parameters.compiler >> -DCMAKE_BUILD_TYPE=<< parameters.build_type >> -DUSE_F2PY=OFF -DMPIEXEC_PREFLAGS=${MPIEXEC_PREFLAGS} -DCMAKE_INSTALL_PREFIX=${CIRCLE_WORKING_DIRECTORY}/workspace/install-<< parameters.repo >> << parameters.extra_cmake_options >> |& tee /logfiles/cmake.log
