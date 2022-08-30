@@ -32,11 +32,14 @@ steps:
         cd ${CIRCLE_WORKING_DIRECTORY}/<< parameters.repo >>
         mkdir -p ${CIRCLE_WORKING_DIRECTORY}/workspace/build-<< parameters.repo >>
 
+  - run:
       name: "Run CMake with FV_PRECISION=<< parameters.fv_precision>>"
       when: << parameters.fv_precision >>
       command: |
         cd ${CIRCLE_WORKING_DIRECTORY}/workspace/build-<< parameters.repo >>
         cmake ${CIRCLE_WORKING_DIRECTORY}/<< parameters.repo >> -DBASEDIR=$BASEDIR/Linux -DCMAKE_Fortran_COMPILER=<< parameters.compiler >> -DCMAKE_BUILD_TYPE=<< parameters.build_type >> -DUSE_F2PY=OFF -DMPIEXEC_PREFLAGS=${MPIEXEC_PREFLAGS} -DCMAKE_INSTALL_PREFIX=${CIRCLE_WORKING_DIRECTORY}/workspace/install-<< parameters.repo >> << parameters.extra_cmake_options >> -DFV_PRECISION=<< parameters.fv_precision >> |& tee /logfiles/cmake.log
+
+  - run:
       name: "Run CMake"
       unless: << parameters.fv_precision >>
       command: |
