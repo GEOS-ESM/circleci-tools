@@ -33,7 +33,7 @@ steps:
 
   - when:
       condition: << parameters.fv_precision >>
-      - steps:
+      steps:
         - run:
             name: "Run CMake with FV_PRECISION=<< parameters.fv_precision>>"
             command: |
@@ -42,7 +42,7 @@ steps:
 
   - unless:
       condition: << parameters.fv_precision >>
-      - steps:
+      steps:
         - run:
             name: "Run CMake"
             command: |
