@@ -37,6 +37,11 @@ parameters:
     description: Extra options to pass to CMake
     type: string
     default: ""
+  fv_precision:
+    description: Precision to build FV3
+    type: enum
+    default: ""
+    enum: ["", "R4", "R8", "R4R8"]
   rebuild_procs:
     description: "Number of processes for rebuild step"
     type: integer
@@ -134,6 +139,7 @@ steps:
       compiler: << parameters.compiler >>
       build_type: << parameters.build_type >>
       extra_cmake_options: << parameters.extra_cmake_options >>
+      fv_precision: << parameters.fv_precision >>
   - buildtarget:
       repo: << parameters.repo >>
       rebuild_procs: << parameters.rebuild_procs >>
