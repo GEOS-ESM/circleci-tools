@@ -39,9 +39,8 @@ parameters:
     default: ""
   fv_precision:
     description: Precision to build FV3
-    type: enum
+    type: string
     default: ""
-    enum: ["", "R4", "R8", "R4R8"]
   rebuild_procs:
     description: "Number of processes for rebuild step"
     type: integer

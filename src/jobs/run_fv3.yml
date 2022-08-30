@@ -38,10 +38,9 @@ parameters:
     default: 72
   # This is a dummy needed for matrix use in builds
   fv_precision:
-    type: enum
-    default: ""
     description: "Precision to build FV3"
-    enum: ["", "R4", "R8", "R4R8"]
+    type: string
+    default: ""
 
 executor:
   name: << parameters.compiler >>
