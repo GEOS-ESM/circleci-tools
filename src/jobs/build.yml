@@ -37,6 +37,11 @@ parameters:
     description: Extra options to pass to CMake
     type: string
     default: ""
+  cmake_generator:
+    description: CMake Generator
+    type: enum
+    default: "Unix Makefiles"
+    enum: ["Unix Makefiles", "Ninja"]
   fv_precision:
     description: Precision to build FV3
     type: enum
@@ -140,19 +145,23 @@ steps:
       build_type: << parameters.build_type >>
       extra_cmake_options: << parameters.extra_cmake_options >>
       fv_precision: << parameters.fv_precision >>
+      cmake_generator: << parameters.cmake_generator >>
   - buildtarget:
       repo: << parameters.repo >>
       rebuild_procs: << parameters.rebuild_procs >>
       target: << parameters.buildtarget >>
+      cmake_generator: << parameters.cmake_generator >>
   - when:
       condition: << parameters.run_unit_tests >>
       steps:
         - buildtests:
             repo: << parameters.repo >>
             rebuild_procs: << parameters.rebuild_procs >>
+            cmake_generator: << parameters.cmake_generator >>
         - runtests:
             repo: << parameters.repo >>
             ctest_options: << parameters.ctest_options >>
+            cmake_generator: << parameters.cmake_generator >>
   - when:
       condition: << parameters.persist_workspace >>
       steps:

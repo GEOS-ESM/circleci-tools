@@ -12,6 +12,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Removed
 
+## [1.12.0] - 2022-09-14
+
+### Added
+
+- Add ability to use Ninja generator during CMake
+
 ## [1.11.0] - 2022-08-30
 
 ### Added

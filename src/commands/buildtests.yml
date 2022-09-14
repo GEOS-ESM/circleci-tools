@@ -9,10 +9,33 @@ parameters:
     description: "Number of processes for rebuild step"
     type: integer
     default: 4
+  cmake_generator:
+    description: CMake Generator
+    type: enum
+    default: "Unix Makefiles"
+    enum: ["Unix Makefiles", "Ninja"]
 
 steps:
-  - run:
-      name: "Build tests"
-      command: |
-        cd ${CIRCLE_WORKING_DIRECTORY}/workspace/build-<< parameters.repo >>
-        make -j "$(nproc)" build-tests |& tee /logfiles/build-tests.log || make -j << parameters.rebuild_procs >> build-tests |& tee /logfiles/build-tests-retry.log
+  when:
+    condition:
+      matches:
+        pattern: "^Unix Makefiles$"
+        value: << parameters.cmake_generator >>
+    steps:
+      - run:
+          name: "Build tests - GNU Make"
+          command: |
+            cd ${CIRCLE_WORKING_DIRECTORY}/workspace/build-<< parameters.repo >>
+            make -j "$(nproc)" build-tests |& tee /logfiles/build-tests.log || make -j << parameters.rebuild_procs >> build-tests |& tee /logfiles/build-tests-retry.log
+
+  when:
+    condition:
+      matches:
+        pattern: "^Ninja$"
+        value: << parameters.cmake_generator >>
+    steps:
+      - run:
+          name: "Build tests - Ninja"
+          command: |
+            cd ${CIRCLE_WORKING_DIRECTORY}/workspace/build-<< parameters.repo >>
+            ninja -j "$(nproc)" build-tests |& tee /logfiles/build-tests.log || ninja -j << parameters.rebuild_procs >> build-tests |& tee /logfiles/build-tests-retry.log
