@@ -28,10 +28,10 @@ steps:
             cd ${CIRCLE_WORKING_DIRECTORY}/workspace/build-<< parameters.repo >>
             make -j "$(nproc)" build-tests |& tee /logfiles/build-tests.log || make -j << parameters.rebuild_procs >> build-tests |& tee /logfiles/build-tests-retry.log
 
-  when:
+  unless:
     condition:
       matches:
-        pattern: "^Ninja$"
+        pattern: "^Unix Makefiles$"
         value: << parameters.cmake_generator >>
     steps:
       - run:
