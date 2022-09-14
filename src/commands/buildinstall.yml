@@ -16,7 +16,7 @@ parameters:
     enum: ["Unix Makefiles", "Ninja"]
 
 steps:
-  when:
+  - when:
     condition:
       matches:
         pattern: "^Unix Makefiles$"
@@ -27,7 +27,7 @@ steps:
           command: |
             cd ${CIRCLE_WORKING_DIRECTORY}/workspace/build-<< parameters.repo >>
             make -j "$(nproc)" install |& tee /logfiles/make.log || make -j << parameters.rebuild_procs >> install |& tee /logfiles/make-retry.log
-  unless:
+  - unless:
     condition:
       matches:
         pattern: "^Unix Makefiles$"
