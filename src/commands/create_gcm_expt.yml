@@ -25,6 +25,8 @@ parameters:
 steps:
   - run:
       name: "Run create_expt.py"
+      environment:
+        TERM: dumb
       command: |
         cd ${CIRCLE_WORKING_DIRECTORY}/<< parameters.workspace_root >>/install-<< parameters.repo >>/bin
         /TinyBCs-GitV10/scripts/create_expt.py << parameters.gcm_experiment_name >> --expdir ${CIRCLE_WORKING_DIRECTORY}/<< parameters.workspace_root >> --horz << parameters.gcm_horz_resolution >> --vert << parameters.gcm_vert_resolution >>
