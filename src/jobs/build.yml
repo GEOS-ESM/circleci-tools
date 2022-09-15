@@ -161,7 +161,6 @@ steps:
         - runtests:
             repo: << parameters.repo >>
             ctest_options: << parameters.ctest_options >>
-            cmake_generator: << parameters.cmake_generator >>
   - when:
       condition: << parameters.persist_workspace >>
       steps:
