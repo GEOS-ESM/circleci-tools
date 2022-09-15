@@ -18,6 +18,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Add ability to use Ninja generator during CMake
 
+### Changed
+
+- Update executors to default to v10.23.0
+
 ## [1.11.0] - 2022-08-30
 
 ### Added
