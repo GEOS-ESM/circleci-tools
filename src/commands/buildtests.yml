@@ -17,25 +17,25 @@ parameters:
 
 steps:
   - when:
-    condition:
-      matches:
-        pattern: "^Unix Makefiles$"
-        value: << parameters.cmake_generator >>
-    steps:
-      - run:
-          name: "Build tests - GNU Make"
-          command: |
-            cd ${CIRCLE_WORKING_DIRECTORY}/workspace/build-<< parameters.repo >>
-            make -j "$(nproc)" build-tests |& tee /logfiles/build-tests.log || make -j << parameters.rebuild_procs >> build-tests |& tee /logfiles/build-tests-retry.log
+      condition:
+        matches:
+          pattern: "^Unix Makefiles$"
+          value: << parameters.cmake_generator >>
+      steps:
+        - run:
+            name: "Build tests - GNU Make"
+            command: |
+              cd ${CIRCLE_WORKING_DIRECTORY}/workspace/build-<< parameters.repo >>
+              make -j "$(nproc)" build-tests |& tee /logfiles/build-tests.log || make -j << parameters.rebuild_procs >> build-tests |& tee /logfiles/build-tests-retry.log
 
   - unless:
-    condition:
-      matches:
-        pattern: "^Unix Makefiles$"
-        value: << parameters.cmake_generator >>
-    steps:
-      - run:
-          name: "Build tests - Ninja"
-          command: |
-            cd ${CIRCLE_WORKING_DIRECTORY}/workspace/build-<< parameters.repo >>
-            ninja -j "$(nproc)" build-tests |& tee /logfiles/build-tests.log || ninja -j << parameters.rebuild_procs >> build-tests |& tee /logfiles/build-tests-retry.log
+      condition:
+        matches:
+          pattern: "^Unix Makefiles$"
+          value: << parameters.cmake_generator >>
+      steps:
+        - run:
+            name: "Build tests - Ninja"
+            command: |
+              cd ${CIRCLE_WORKING_DIRECTORY}/workspace/build-<< parameters.repo >>
+              ninja -j "$(nproc)" build-tests |& tee /logfiles/build-tests.log || ninja -j << parameters.rebuild_procs >> build-tests |& tee /logfiles/build-tests-retry.log
