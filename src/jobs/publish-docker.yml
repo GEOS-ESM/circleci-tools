@@ -1,0 +1,50 @@
+description: >
+  Publish GEOS-ESM multirepo on Dockerhub
+
+parameters:
+  repo:
+    type: string
+    default: GEOSgcm
+    description: "Name of the repo to act upon"
+  compiler:
+    type: enum
+    default: ifort
+    description: "Compiler to use"
+    enum: ["ifort", "gfortran"]
+  resource_class:
+    type: enum
+    default: large
+    description: "Resource class to use"
+    enum: ["medium", "large", "xlarge"]
+  baselibs_version:
+    type: string
+    default: v7.5.0
+    description: "Baselibs version to use"
+
+executor:
+  name: << parameters.compiler >>
+  resource_class: << parameters.resource_class >>
+  baselibs_version: << parameters.baselibs_version >>
+
+working_directory: /root/project
+
+environment:
+  DOCKER_REPOSITORY: "gmao/container-test"
+  DOCKER_NAMESPACE: "gmao"
+  DOCKER_NAME: "container-test"
+
+steps:
+  - setup_remote_docker:
+      docker_layer_caching: true
+  - versions:
+      compiler: << parameters.compiler >>
+  - run:
+      name: Build << parameters.compiler >> Docker Image
+      command: |
+        VERSION=$(echo $CIRCLE_TAG | sed -e 's/v*\([0-9.]*\).*/\1/')
+        docker build --no-cache -t ${DOCKER_REPOSITORY}:${VERSION} -f ./.docker/Dockerfile .
+  - run:
+      name: Push << parameters.compiler >> Docker Image
+      command: |
+        VERSION=$(echo $CIRCLE_TAG | sed -e 's/v*\([0-9.]*\).*/\1/')
+        docker push ${DOCKER_REPOSITORY}:${VERSION}
