@@ -1,0 +1,16 @@
+description: >
+  GEOS-ESM docker executor
+
+parameters:
+  resource_class:
+    description: "Resource class to use"
+    default: large
+    type: string
+
+docker:
+  - image: cimg/base:2022.06
+    auth:
+      username: $DOCKERHUB_USER
+      password: $DOCKERHUB_AUTH_TOKEN
+
+resource_class: << parameters.resource_class >>

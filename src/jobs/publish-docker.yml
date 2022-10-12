@@ -2,49 +2,70 @@ description: >
   Publish GEOS-ESM multirepo on Dockerhub
 
 parameters:
-  repo:
+  dockerhub_org:
     type: string
-    default: GEOSgcm
-    description: "Name of the repo to act upon"
-  compiler:
-    type: enum
-    default: ifort
-    description: "Compiler to use"
-    enum: ["ifort", "gfortran"]
+    default: gmao
+    description: "Name of the Dockerhub Org"
+  dockerhub_name:
+    type: string
+    default: geosgcm
+    description: "Name of the container to make"
   resource_class:
     type: enum
     default: large
     description: "Resource class to use"
     enum: ["medium", "large", "xlarge"]
+  os_version:
+    type: enum
+    default: ubuntu20
+    description: "Operating System"
+    enum: ["ubuntu20"]
+  compiler_name:
+    type: enum
+    default: intel
+    description: "Compiler Name on image"
+    enum: ["intel", "gcc"]
+  compiler_version:
+    type: string
+    default: ""
+    description: "Compiler Version on image"
+  mpi_name:
+    type: enum
+    default: intelmpi
+    description: "MPI Name on image"
+    enum: ["intelmpi", "openmpi"]
+  mpi_version:
+    type: string
+    default: ""
+    description: "MPI Version on image"
   baselibs_version:
     type: string
     default: v7.5.0
     description: "Baselibs version to use"
 
 executor:
-  name: << parameters.compiler >>
+  name: docker
   resource_class: << parameters.resource_class >>
-  baselibs_version: << parameters.baselibs_version >>
 
 working_directory: /root/project
-
-environment:
-  DOCKER_REPOSITORY: "gmao/container-test"
-  DOCKER_NAMESPACE: "gmao"
-  DOCKER_NAME: "container-test"
 
 steps:
   - setup_remote_docker:
       docker_layer_caching: true
-  - versions:
-      compiler: << parameters.compiler >>
   - run:
-      name: Build << parameters.compiler >> Docker Image
+      name: Build << parameters.compiler_name >> Docker Image
       command: |
         VERSION=$(echo $CIRCLE_TAG | sed -e 's/v*\([0-9.]*\).*/\1/')
-        docker build --no-cache -t ${DOCKER_REPOSITORY}:${VERSION} -f ./.docker/Dockerfile .
+        docker build --no-cache \
+          --build-arg osversion=<< parameters.os_version >> \
+          --build-arg baselibversion=<< parameters.baselibs_version >> \
+          --build-arg mpiname=<< parameters.mpi_name >> \
+          --build-arg mpiversion=<< parameters.mpi_version >> \
+          --build-arg compilername=<< parameters.compiler_name >> \
+          --build-arg compilerversion=<< parameters.compiler_version >> \
+          -t << parameters.dockerhub_org >>/<< parameters.dockerhub_name >>:${VERSION} -f ./.docker/Dockerfile .
   - run:
       name: Push << parameters.compiler >> Docker Image
       command: |
         VERSION=$(echo $CIRCLE_TAG | sed -e 's/v*\([0-9.]*\).*/\1/')
-        docker push ${DOCKER_REPOSITORY}:${VERSION}
+        docker push << parameters.dockerhub_org >>/<< parameters.dockerhub_name >>:${VERSION}
