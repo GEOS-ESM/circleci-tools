@@ -65,7 +65,7 @@ steps:
           --build-arg compilerversion=<< parameters.compiler_version >> \
           -t << parameters.dockerhub_org >>/<< parameters.dockerhub_name >>:${VERSION} -f ./.docker/Dockerfile .
   - run:
-      name: Push << parameters.compiler >> Docker Image
+      name: Push << parameters.compiler_name >> Docker Image
       command: |
         VERSION=$(echo $CIRCLE_TAG | sed -e 's/v*\([0-9.]*\).*/\1/')
         docker push << parameters.dockerhub_org >>/<< parameters.dockerhub_name >>:${VERSION}
