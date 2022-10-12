@@ -47,8 +47,6 @@ executor:
   name: docker
   resource_class: << parameters.resource_class >>
 
-working_directory: /root/project
-
 steps:
   - checkout
   - setup_remote_docker:
