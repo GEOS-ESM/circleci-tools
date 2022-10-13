@@ -8,12 +8,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
-- Added docker publish job
-  - Has option to push to either Docker Hub or GitHub Container Registry (or both)
-
 ### Changed
 
 ### Removed
+
+## [1.13.0] - 2022-10-13
+
+### Added
+
+- Added docker publish job
+  - Has option to push to either Docker Hub or GitHub Container Registry (or both)
 
 ## [1.12.0] - 2022-09-14
 
