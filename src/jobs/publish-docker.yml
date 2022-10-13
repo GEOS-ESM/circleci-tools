@@ -81,7 +81,7 @@ steps:
           --build-arg compilername=<< parameters.compiler_name >> \
           --build-arg compilerversion=<< parameters.compiler_version >> \
           --build-arg maplversion=$CIRCLE_TAG \
-          -t << parameters.container_name >>:${VERSION} -f ./.docker/Dockerfile .
+          -t << parameters.container_name >>:${VERSION}-<< parameters.compiler_name >> -f ./.docker/Dockerfile .
   - when:
       condition: << parameters.push_to_dockerhub >>
       steps:
@@ -93,8 +93,8 @@ steps:
             name: Push << parameters.compiler_name >> Docker Image to Docker Hub
             command: |
               VERSION=$(echo $CIRCLE_TAG | sed -e 's/v*\([0-9.]*\).*/\1/')
-              docker tag << parameters.container_name >>:${VERSION} << parameters.dockerhub_org >>/<< parameters.container_name >>:${VERSION}
-              docker push << parameters.dockerhub_org >>/<< parameters.container_name >>:${VERSION}
+              docker tag << parameters.container_name >>:${VERSION}-<< parameters.compiler_name >> << parameters.dockerhub_org >>/<< parameters.container_name >>:${VERSION}-<< parameters.compiler_name >>
+              docker push << parameters.dockerhub_org >>/<< parameters.container_name >>:${VERSION}-<< parameters.compiler_name >>
   - when:
       condition: << parameters.push_to_ghcr >>
       steps:
@@ -106,5 +106,5 @@ steps:
             name: Push << parameters.compiler_name >> Docker Image to GitHub Container Registry
             command: |
               VERSION=$(echo $CIRCLE_TAG | sed -e 's/v*\([0-9.]*\).*/\1/')
-              docker tag << parameters.container_name >>:${VERSION} ghcr.io/<< parameters.ghcr_org >>/<< parameters.container_name >>:${VERSION}
-              docker push ghcr.io/<< parameters.ghcr_org >>/<< parameters.container_name >>:${VERSION}
+              docker tag << parameters.container_name >>:${VERSION}-<< parameters.compiler_name >> ghcr.io/<< parameters.ghcr_org >>/<< parameters.container_name >>:${VERSION}-<< parameters.compiler_name >>
+              docker push ghcr.io/<< parameters.ghcr_org >>/<< parameters.container_name >>:${VERSION}-<< parameters.compiler_name >>
