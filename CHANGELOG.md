@@ -12,6 +12,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Removed
 
+## [1.13.1] - 2022-10-13
+
+### Fixed
+
+- Append compiler name to docker images as either Intel or GCC images might be built.
+
 ## [1.13.0] - 2022-10-13
 
 ### Added
