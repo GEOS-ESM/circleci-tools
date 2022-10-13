@@ -77,7 +77,7 @@ steps:
   - run:
       name: Login to Docker Hub
       command: |
-        echo $DOCKERHUB_AUTH_TOKEN | docker login ghcr.io --username $DOCKERHUB_USER --password-stdin
+        echo $DOCKERHUB_AUTH_TOKEN | docker login --username $DOCKERHUB_USER --password-stdin
   - run:
       name: Push << parameters.compiler_name >> Docker Image to Docker Hub
       command: |
