@@ -19,6 +19,10 @@ parameters:
     type: string
     default: geos-esm
     description: "Name of the GitHub Container Registry Org"
+  tag_build_arg_name:
+    type: string
+    default: gcmversion
+    description: "Name of the build-arg used in the Dockerfile to pass in the tag (e.g., maplversion, fv3version, gcmversion)"
   container_name:
     type: string
     default: geosgcm
@@ -80,7 +84,7 @@ steps:
           --build-arg mpiversion=<< parameters.mpi_version >> \
           --build-arg compilername=<< parameters.compiler_name >> \
           --build-arg compilerversion=<< parameters.compiler_version >> \
-          --build-arg maplversion=$CIRCLE_TAG \
+          --build-arg << parameters.tag_build_arg_name >>=$CIRCLE_TAG \
           -t << parameters.container_name >>:${VERSION}-<< parameters.compiler_name >> -f ./.docker/Dockerfile .
   - when:
       condition: << parameters.push_to_dockerhub >>
