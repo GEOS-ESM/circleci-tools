@@ -7,10 +7,7 @@ parameters:
     default: large
     type: string
 
-docker:
-  - image: cimg/base:2022.06
-    auth:
-      username: $DOCKERHUB_USER
-      password: $DOCKERHUB_AUTH_TOKEN
+machine:
+  - image: ubuntu-2204:2022.04.2
 
 resource_class: << parameters.resource_class >>
