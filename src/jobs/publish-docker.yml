@@ -92,5 +92,5 @@ steps:
       name: Push << parameters.compiler_name >> Docker Image to GitHub Container Registry
       command: |
         VERSION=$(echo $CIRCLE_TAG | sed -e 's/v*\([0-9.]*\).*/\1/')
-        docker tag << parameters.container_name >>:${VERSION} ghcr.io/<< parameters.ghcr.org >>/<< parameters.container_name >>:${VERSION}
+        docker tag << parameters.container_name >>:${VERSION} ghcr.io/<< parameters.ghcr_org >>/<< parameters.container_name >>:${VERSION}
         docker push ghcr.io/<< parameters.ghcr_org >>/<< parameters.container_name >>:${VERSION}
