@@ -1,12 +1,17 @@
 description: >
-  Publish GEOS-ESM multirepo on Dockerhub
+  Publish GEOS-ESM multirepo on Docker Hub and GHCR.
+  Note that this *ONLY* works for v-tags.
 
 parameters:
   dockerhub_org:
     type: string
     default: gmao
-    description: "Name of the Dockerhub Org"
-  dockerhub_name:
+    description: "Name of the Docker Hub Org"
+  ghcr_org:
+    type: string
+    default: geos-esm
+    description: "Name of the GitHub Container Registry Org"
+  container_name:
     type: string
     default: geosgcm
     description: "Name of the container to make"
@@ -67,9 +72,25 @@ steps:
           --build-arg mpiversion=<< parameters.mpi_version >> \
           --build-arg compilername=<< parameters.compiler_name >> \
           --build-arg compilerversion=<< parameters.compiler_version >> \
-          -t << parameters.dockerhub_org >>/<< parameters.dockerhub_name >>:${VERSION} -f ./.docker/Dockerfile .
+          --build-arg maplversion=$CIRCLE_TAG \
+          -t << parameters.container_name >>:${VERSION} -f ./.docker/Dockerfile .
   - run:
-      name: Push << parameters.compiler_name >> Docker Image
+      name: Login to Docker Hub
+      command: |
+        echo $DOCKERHUB_AUTH_TOKEN | docker login ghcr.io --username $DOCKERHUB_USER --password-stdin
+  - run:
+      name: Push << parameters.compiler_name >> Docker Image to Docker Hub
       command: |
         VERSION=$(echo $CIRCLE_TAG | sed -e 's/v*\([0-9.]*\).*/\1/')
-        docker push << parameters.dockerhub_org >>/<< parameters.dockerhub_name >>:${VERSION}
+        docker tag << parameters.container_name >>:${VERSION} << parameters.dockerhub_org >>/<< parameters.container_name >>:${VERSION}
+        docker push << parameters.dockerhub_org >>/<< parameters.container_name >>:${VERSION}
+  - run:
+      name: Login to GitHub Container Registry
+      command: |
+        echo $GHCR_TOKEN | docker login ghcr.io --username $GHCR_USER --password-stdin
+  - run:
+      name: Push << parameters.compiler_name >> Docker Image to GitHub Container Registry
+      command: |
+        VERSION=$(echo $CIRCLE_TAG | sed -e 's/v*\([0-9.]*\).*/\1/')
+        docker tag << parameters.container_name >>:${VERSION} ghcr.io/<< parameters.ghcr.org >>/<< parameters.container_name >>:${VERSION}
+        docker push ghcr.io/<< parameters.ghcr_org >>/<< parameters.container_name >>:${VERSION}
