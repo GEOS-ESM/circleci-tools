@@ -10,9 +10,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
-- Move to use `machine` executor for CircleCI Docker builds
-
 ### Removed
+
+## [1.14.0] - 2022-10-13
+
+### Changed
+
+- Move to use `machine` executor for CircleCI Docker builds
 
 ## [1.13.1] - 2022-10-13
 
