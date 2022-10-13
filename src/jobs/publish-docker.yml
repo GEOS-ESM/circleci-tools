@@ -1,0 +1,110 @@
+description: >
+  Publish GEOS-ESM multirepo on Docker Hub and GHCR.
+  Note that this *ONLY* works for v-tags.
+
+parameters:
+  push_to_dockerhub:
+    type: boolean
+    default: true
+    description: "Push to Docker Hub"
+  dockerhub_org:
+    type: string
+    default: gmao
+    description: "Name of the Docker Hub Org"
+  push_to_ghcr:
+    type: boolean
+    default: true
+    description: "Push to GitHub Container Registry"
+  ghcr_org:
+    type: string
+    default: geos-esm
+    description: "Name of the GitHub Container Registry Org"
+  container_name:
+    type: string
+    default: geosgcm
+    description: "Name of the container to make"
+  resource_class:
+    type: enum
+    default: large
+    description: "Resource class to use"
+    enum: ["medium", "large", "xlarge"]
+  os_version:
+    type: enum
+    default: ubuntu20
+    description: "Operating System"
+    enum: ["ubuntu20"]
+  image_name:
+    type: string
+    default: ""
+    description: "Base Docker Image Name"
+  compiler_name:
+    type: enum
+    default: intel
+    description: "Compiler Name on image"
+    enum: ["intel", "gcc"]
+  compiler_version:
+    type: string
+    default: ""
+    description: "Compiler Version on image"
+  mpi_name:
+    type: enum
+    default: intelmpi
+    description: "MPI Name on image"
+    enum: ["intelmpi", "openmpi"]
+  mpi_version:
+    type: string
+    default: ""
+    description: "MPI Version on image"
+  baselibs_version:
+    type: string
+    default: v7.5.0
+    description: "Baselibs version to use"
+
+executor:
+  name: docker
+  resource_class: << parameters.resource_class >>
+
+steps:
+  - checkout
+  - setup_remote_docker:
+      docker_layer_caching: true
+  - run:
+      name: Build << parameters.compiler_name >> Docker Image
+      command: |
+        VERSION=$(echo $CIRCLE_TAG | sed -e 's/v*\([0-9.]*\).*/\1/')
+        docker build --no-cache \
+          --build-arg osversion=<< parameters.os_version >> \
+          --build-arg imagename=<< parameters.image_name >> \
+          --build-arg baselibversion=<< parameters.baselibs_version >> \
+          --build-arg mpiname=<< parameters.mpi_name >> \
+          --build-arg mpiversion=<< parameters.mpi_version >> \
+          --build-arg compilername=<< parameters.compiler_name >> \
+          --build-arg compilerversion=<< parameters.compiler_version >> \
+          --build-arg maplversion=$CIRCLE_TAG \
+          -t << parameters.container_name >>:${VERSION} -f ./.docker/Dockerfile .
+  - when:
+      condition: << parameters.push_to_dockerhub >>
+      steps:
+        - run:
+            name: Login to Docker Hub
+            command: |
+              echo $DOCKERHUB_AUTH_TOKEN | docker login --username $DOCKERHUB_USER --password-stdin
+        - run:
+            name: Push << parameters.compiler_name >> Docker Image to Docker Hub
+            command: |
+              VERSION=$(echo $CIRCLE_TAG | sed -e 's/v*\([0-9.]*\).*/\1/')
+              docker tag << parameters.container_name >>:${VERSION} << parameters.dockerhub_org >>/<< parameters.container_name >>:${VERSION}
+              docker push << parameters.dockerhub_org >>/<< parameters.container_name >>:${VERSION}
+  - when:
+      condition: << parameters.push_to_ghcr >>
+      steps:
+        - run:
+            name: Login to GitHub Container Registry
+            command: |
+              echo $GHCR_TOKEN | docker login ghcr.io --username $GHCR_USER --password-stdin
+        - run:
+            name: Push << parameters.compiler_name >> Docker Image to GitHub Container Registry
+            command: |
+              VERSION=$(echo $CIRCLE_TAG | sed -e 's/v*\([0-9.]*\).*/\1/')
+              docker tag << parameters.container_name >>:${VERSION} ghcr.io/<< parameters.ghcr_org >>/<< parameters.container_name >>:${VERSION}
+              docker push ghcr.io/<< parameters.ghcr_org >>/<< parameters.container_name >>:${VERSION}
