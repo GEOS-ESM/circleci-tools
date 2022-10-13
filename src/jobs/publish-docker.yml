@@ -20,6 +20,10 @@ parameters:
     default: ubuntu20
     description: "Operating System"
     enum: ["ubuntu20"]
+  image_name:
+    type: string
+    default: ""
+    description: "Base Docker Image Name"
   compiler_name:
     type: enum
     default: intel
@@ -57,6 +61,7 @@ steps:
         VERSION=$(echo $CIRCLE_TAG | sed -e 's/v*\([0-9.]*\).*/\1/')
         docker build --no-cache \
           --build-arg osversion=<< parameters.os_version >> \
+          --build-arg imagename=<< parameters.imagename >> \
           --build-arg baselibversion=<< parameters.baselibs_version >> \
           --build-arg mpiname=<< parameters.mpi_name >> \
           --build-arg mpiversion=<< parameters.mpi_version >> \
