@@ -21,6 +21,11 @@ parameters:
     description: "Vertical resolution for gcm experiment"
     type: integer
     default: 72
+  gcm_ocean_type:
+    description: "Ocean type for gcm experiment"
+    type: enum
+    enum: ["o1", "MOM6"]
+    default: o1
 
 steps:
   - run:
@@ -29,5 +34,5 @@ steps:
         TERM: dumb
       command: |
         cd ${CIRCLE_WORKING_DIRECTORY}/<< parameters.workspace_root >>/install-<< parameters.repo >>/bin
-        /TinyBCs-GitV10/scripts/create_expt.py << parameters.gcm_experiment_name >> --expdir ${CIRCLE_WORKING_DIRECTORY}/<< parameters.workspace_root >> --horz << parameters.gcm_horz_resolution >> --vert << parameters.gcm_vert_resolution >>
+        /TinyBCs-GitV10/scripts/create_expt.py << parameters.gcm_experiment_name >> --expdir ${CIRCLE_WORKING_DIRECTORY}/<< parameters.workspace_root >> --horz << parameters.gcm_horz_resolution >> --vert << parameters.gcm_vert_resolution >> --ocean << parameters.gcm_ocean_type >>
 
