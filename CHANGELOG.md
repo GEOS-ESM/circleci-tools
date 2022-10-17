@@ -12,6 +12,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Removed
 
+## [1.15.0] - 2022-10-17
+
+## Added
+
+- Added `gcm_ocean_type` to GCM experiment to support MOM6 runs
+
 ## [1.14.0] - 2022-10-13
 
 ### Changed

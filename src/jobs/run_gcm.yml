@@ -40,6 +40,11 @@ parameters:
     description: "Vertical resolution for gcm experiment"
     type: integer
     default: 72
+  gcm_ocean_type:
+    description: "Ocean type for gcm experiment"
+    type: enum
+    enum: ["o1", "MOM6"]
+    default: o1
 
 executor:
   name: << parameters.compiler >>-bcs
@@ -58,6 +63,7 @@ steps:
       gcm_experiment_name: << parameters.gcm_experiment_name >>
       gcm_horz_resolution: << parameters.gcm_horz_resolution >>
       gcm_vert_resolution: << parameters.gcm_vert_resolution >>
+      gcm_ocean_type: << parameters.gcm_ocean_type >>
   - run_makeoneday:
       repo: << parameters.repo >>
       workspace_root: << parameters.workspace_root >>
