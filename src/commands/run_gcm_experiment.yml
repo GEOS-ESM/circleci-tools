@@ -16,7 +16,7 @@ parameters:
 
 steps:
   - run:
-      name: "Run gcm.j"
+      name: "Run gcm_run.j"
       command: |
         mkdir -p /logfiles
         cd ${CIRCLE_WORKING_DIRECTORY}/<< parameters.workspace_root >>/<< parameters.gcm_experiment_name >>
