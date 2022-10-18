@@ -63,6 +63,10 @@ parameters:
     type: string
     default: v7.5.0
     description: "Baselibs version to use"
+  bcs_version:
+    type: string
+    default: ""
+    description: "Boundary conditions version to use"
 
 executor:
   name: docker
@@ -86,6 +90,7 @@ steps:
           --build-arg mpiversion=<< parameters.mpi_version >> \
           --build-arg compilername=<< parameters.compiler_name >> \
           --build-arg compilerversion=<< parameters.compiler_version >> \
+          --build-arg bcsversion=<< parameters.bcs_version >> \
           --build-arg << parameters.tag_build_arg_name >>=$CIRCLE_TAG \
           -t << parameters.container_name >>:${VERSION}-<< parameters.compiler_name >> -f ./.docker/Dockerfile .
   - when:
