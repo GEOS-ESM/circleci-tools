@@ -12,6 +12,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Removed
 
+## [1.17.0] - 2022-10-20
+
+### Added
+
+- Added `change_layout` boolean to makeoneday command. Needed because the coupled run does not like the layout change.
+
 ## [1.16.1] - 2022-10-20
 
 ### Fixed
