@@ -45,6 +45,10 @@ parameters:
     type: enum
     enum: ["o1", "MOM6"]
     default: o1
+  change_layout:
+    description: "Change layout to 1x6 (true for amip, false for coupled)"
+    type: boolean
+    default: true
 
 executor:
   name: << parameters.compiler >>-bcs
@@ -68,6 +72,7 @@ steps:
       repo: << parameters.repo >>
       workspace_root: << parameters.workspace_root >>
       gcm_experiment_name: << parameters.gcm_experiment_name >>
+      change_layout: << parameters.change_layout >>
   - make_onehour_history:
       repo: << parameters.repo >>
       workspace_root: << parameters.workspace_root >>

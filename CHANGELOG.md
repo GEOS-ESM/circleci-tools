@@ -14,6 +14,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [1.17.0] - 2022-10-20
 
+### Fixed
+
+- Pass `change_layout` through run_gcm
+
+## [1.17.0] - 2022-10-20
+
 ### Added
 
 - Added `change_layout` boolean to makeoneday command. Needed because the coupled run does not like the layout change.
