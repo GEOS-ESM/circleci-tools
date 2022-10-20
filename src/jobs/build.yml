@@ -170,6 +170,8 @@ steps:
               - install-<< parameters.repo >>/bin
               - install-<< parameters.repo >>/lib
               - install-<< parameters.repo >>/etc
+              - install-<< parameters.repo >>/post
+              - install-<< parameters.repo >>/coupled_diagnostics
   - compress_artifacts
   - store_artifacts:
       path: /logfiles
