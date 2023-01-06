@@ -2,7 +2,6 @@
 
 [![CircleCI Build Status](https://circleci.com/gh/GEOS-ESM/circleci-tools.svg?style=shield "CircleCI Build Status")](https://circleci.com/gh/GEOS-ESM/circleci-tools) [![CircleCI Orb Version](https://badges.circleci.com/orbs/geos-esm/circleci-tools.svg)](https://circleci.com/orbs/registry/orb/geos-esm/circleci-tools) [![GitHub License](https://img.shields.io/badge/license-MIT-lightgrey.svg)](https://raw.githubusercontent.com/GEOS-ESM/circleci-tools/master/LICENSE) [![CircleCI Community](https://img.shields.io/badge/community-CircleCI%20Discuss-343434.svg)](https://discuss.circleci.com/c/ecosystem/orbs)
 
-
 This repo holds commands, scripts, etc. for CircleCI tasks in GEOS-ESM
 
 ## Usage
