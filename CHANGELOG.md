@@ -12,11 +12,17 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Removed
 
+## [1.19.0] - 2023-03-15
+
+### Changed
+
+- Moved to use BCs version v11.0.0 as the default
+
 ## [1.18.0] - 2022-12-16
 
 ### Changed
 
-- Moved to use Baselibs 7.7.0 as the default
+- Moved to use Baselibs v7.7.0 as the default
 
 ## [1.17.1] - 2022-10-20
 
