@@ -22,7 +22,7 @@ parameters:
     description: "Baselibs version to use"
   bcs_version:
     type: string
-    default: v10.23.0
+    default: v11.00.0
     description: "Boundary condition version to use"
   workspace_root:
     description: "Workspace root"
