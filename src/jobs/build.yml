@@ -87,6 +87,15 @@ parameters:
     description: "Checkout release/MAPL-v3 branches"
     type: boolean
     default: false
+  remove_flap:
+    description: "Remove FLAP from Baselibs"
+    type: boolean
+    default: false
+  remove_pflogger:
+    description: "Remove pFlogger from Baselibs"
+    type: boolean
+    default: false
+
 
 executor:
   name: << parameters.compiler >>
@@ -98,6 +107,39 @@ working_directory: /root/project
 steps:
   - versions:
       compiler: << parameters.compiler >>
+
+  # For some cases to be correctly handled, we need to remove some
+  # packages from Baselibs (e.g., UFS builds)
+  - when:
+      condition: << parameters.remove_flap >>
+      steps:
+        - run:
+            name: Remove FLAP from Baselibs
+            # We now need to delete files from the baselibs
+            # install but we don't know the exact path (different on
+            # different executors). So we use find to locate the
+            # files and then delete them.
+            #
+            # 1. delete any directory called FLAP
+            # 2. delete any file called libFLAP.a
+            command: |
+              find /baselibs/ -type d -name FLAP -exec rm -rf {} +
+              find /baselibs/ -type f -name libFLAP.a -exec rm -f {} +
+
+  - when:
+      condition: << parameters.remove_pflogger >>
+      steps:
+        - run:
+            name: Remove pFlogger from Baselibs
+            # We now need to delete files from the baselibs
+            # install but we don't know the exact path (different on
+            # different executors). So we use find to locate the
+            # files and then delete them.
+            #
+            # 1. delete any directory that starts with PFLOGGER
+            command: |
+              find /baselibs/ -type d -name PFLOGGER* -exec rm -rf {} +
+
   # If we have to checkout a fixture, do that...
   - when:
       condition: << parameters.checkout_fixture >>
