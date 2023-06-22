@@ -8,11 +8,11 @@ parameters:
     type: string
   baselibs_version:
     description: "Version of Baselibs to use"
-    default: v7.7.0
+    default: v7.13.0
     type: string
   bcs_version:
     description: "Version of boundary conditions to use"
-    default: v11.00.0
+    default: v11.1.0
     type: string
 
 docker:

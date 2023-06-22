@@ -11,8 +11,8 @@ These are named to match the Fortran compiler.
 They have on two optional parameters:
 
 1. `resource_class` which defaults to `large`
-2. `baselibs_version` which defaults to `v7.7.0`
-3. `bcs_version` which defaults to `v11.00.0`
+2. `baselibs_version` which defaults to `v7.13.0`
+3. `bcs_version` which defaults to `v11.1.0`
 
 ## See:
  - [Orb Author Intro](https://circleci.com/docs/2.0/orb-author-intro/#section=configuration)
