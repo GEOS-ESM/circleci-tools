@@ -8,7 +8,7 @@ parameters:
     type: string
   baselibs_version:
     description: "Version of Baselibs to use"
-    default: v7.13.0
+    default: v7.14.0
     type: string
 
 docker:
