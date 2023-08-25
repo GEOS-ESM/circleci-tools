@@ -12,6 +12,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Removed
 
+## [1.23.0] - 2023-08-25
+
+### Changed
+
+- Updated `checkout_mapl3_release_branch` command to also checkout `geos/release/MAPL-v3`
+
 ## [1.22.0] - 2023-07-31
 
 ### Changed
