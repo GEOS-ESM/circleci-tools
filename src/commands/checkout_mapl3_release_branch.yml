@@ -12,5 +12,6 @@ steps:
       command: |
         cd ${CIRCLE_WORKING_DIRECTORY}/<< parameters.repo >>
         mepo checkout-if-exists release/MAPL-v3
+        mepo checkout-if-exists geos/release/MAPL-v3
         mepo status
 
