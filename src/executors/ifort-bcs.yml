@@ -12,7 +12,7 @@ parameters:
     type: string
   bcs_version:
     description: "Version of boundary conditions to use"
-    default: v11.1.0
+    default: v11.2.0
     type: string
 
 docker:

@@ -12,7 +12,7 @@ They have on two optional parameters:
 
 1. `resource_class` which defaults to `large`
 2. `baselibs_version` which defaults to `v7.14.0`
-3. `bcs_version` which defaults to `v11.1.0`
+3. `bcs_version` which defaults to `v11.2.0`
 
 ## See:
  - [Orb Author Intro](https://circleci.com/docs/2.0/orb-author-intro/#section=configuration)

@@ -12,6 +12,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Removed
 
+## [1.24.0] - 2023-08-28
+
+### Changed
+
+- Update to use BCs v11.2.0 by default
+
 ## [1.23.0] - 2023-08-25
 
 ### Changed
