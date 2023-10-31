@@ -12,6 +12,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Removed
 
+## [1.25.0] - 2023-10-31
+
+### Changed
+
+- Update to use BCs v11.3.0 by default
+  - New file for MOM6 runs
+
 ## [1.24.0] - 2023-08-28
 
 ### Changed
