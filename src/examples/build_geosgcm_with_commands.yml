@@ -4,7 +4,7 @@ description: |
 usage:
   version: 2.1
   orbs:
-    circleci-tools: geos-esm/circleci-tools@1 # Refers to the version of the orb, not GEOSgcm
+    circleci-tools: geos-esm/circleci-tools@2 # Refers to the version of the orb, not GEOSgcm
   workflows:
     build-test:
       jobs:
