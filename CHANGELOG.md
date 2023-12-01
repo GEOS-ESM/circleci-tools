@@ -12,6 +12,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Removed
 
+## [2.0.0] - 2023-12-01
+
+### Changed
+
+- Migrated to orb-tools v12
+  - This now requires snake_case for all commands and jobs
+    - The major one will be `publish-docker` which is now `publish_docker`
+
 ## [1.26.0] - 2023-12-01
 
 ### Changed

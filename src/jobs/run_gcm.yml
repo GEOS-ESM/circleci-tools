@@ -51,7 +51,7 @@ parameters:
     default: true
 
 executor:
-  name: << parameters.compiler >>-bcs
+  name: << parameters.compiler >>_bcs
   resource_class: << parameters.resource_class >>
   baselibs_version: << parameters.baselibs_version >>
   bcs_version: << parameters.bcs_version >>
