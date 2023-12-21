@@ -24,13 +24,14 @@ workflows:
       - orb-tools/pack:
           filters: *filters
       - orb-tools/publish:
-          orb-name: geos-esm/circleci-tools
-          vcs-type: << pipeline.project.type >>
-          pub-type: production
+          orb_name: geos-esm/circleci-tools
+          vcs_type: << pipeline.project.type >>
+          pub_type: production
           requires:
             - orb-tools/pack
             - integration-test-1
           context: orb-publishing
+          enable_pr_comment: true
           filters:
             branches:
               ignore: /.*/
