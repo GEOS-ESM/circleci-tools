@@ -18,6 +18,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Updated the GNU image to use Open MPI 5.0.0
 
+### Fixed
+
+- Fixed some issues with the v12 orb-tools migration
+
 ## [2.0.1] - 2023-12-01
 
 ### Changed
