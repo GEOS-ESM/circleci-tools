@@ -21,8 +21,8 @@ workflows:
       - shellcheck/check:
           filters: *filters
       - orb-tools/publish:
-          orb-name: geos-esm/circleci-tools
-          vcs-type: << pipeline.project.type >>
+          orb_name: geos-esm/circleci-tools
+          vcs_type: << pipeline.project.type >>
           requires:
             [orb-tools/lint, orb-tools/review, orb-tools/pack, shellcheck/check]
           # Use a context to hold your publishing token.
@@ -31,6 +31,6 @@ workflows:
       # Triggers the next workflow in the Orb Development Kit.
       - orb-tools/continue:
           pipeline-number: << pipeline.number >>
-          vcs-type: << pipeline.project.type >>
+          vcs_type: << pipeline.project.type >>
           requires: [orb-tools/publish]
           filters: *filters
