@@ -1,0 +1,21 @@
+description: "Checkout branch on fixture"
+
+parameters:
+  repo:
+    description: "Name of the repo to act upon"
+    type: string
+    default: GEOSgcm
+  branch:
+    description: "Name of the branch to checkout"
+    type: string
+    default: ""
+
+steps:
+  - run:
+      name: "Checkout branch on fixture"
+      command: |
+        cd ${CIRCLE_WORKING_DIRECTORY}/<< parameters.repo >>
+        if [ "${CIRCLE_BRANCH}" != "develop" ] && [ "${CIRCLE_BRANCH}" != "main" ]
+        then
+           git checkout ${CIRCLE_BRANCH} || true
+        fi
