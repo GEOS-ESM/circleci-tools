@@ -1,4 +1,4 @@
-description: "Checkout branch on fixture"
+description: "Checkout feature branch on fixture, allow failure"
 
 parameters:
   repo:
@@ -12,7 +12,7 @@ parameters:
 
 steps:
   - run:
-      name: "Checkout branch on fixture"
+      name: "Checkout branch on fixture on feature, allow failure"
       command: |
         cd ${CIRCLE_WORKING_DIRECTORY}/<< parameters.repo >>
         if [ "${CIRCLE_BRANCH}" != "develop" ] && [ "${CIRCLE_BRANCH}" != "main" ]
