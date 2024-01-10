@@ -158,6 +158,11 @@ steps:
         - checkout_branch_on_fixture:
             repo: << parameters.repo >>
             branch: << parameters.fixture_branch >>
+  - unless:
+      condition: << parameters.fixture_branch >>
+      steps:
+        - checkout_feature_branch_on_fixture_allow_fail:
+            repo: << parameters.repo >>
   - mepoclone:
       repo: << parameters.repo >>
   - when:

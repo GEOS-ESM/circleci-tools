@@ -12,6 +12,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Removed
 
+## [2.2.0] - 2024-01-10
+
+### Added
+
+- Added new command `checkout_feature_branch_on_fixture_allow_fail` which will try and checkout the current PRs branch on the fixture. If it fails, it will just continue on.
+
 ## [2.1.0] - 2023-12-21
 
 ### Changed
