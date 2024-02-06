@@ -17,7 +17,7 @@ steps:
       - run:
           name: "Mepo clone external repos with blobless"
           command: |
-            cd cd ${CIRCLE_WORKING_DIRECTORY}/<< parameters.repo >>
+            cd ${CIRCLE_WORKING_DIRECTORY}/<< parameters.repo >>
             mepo clone --partial blobless
             mepo status
   - unless:
