@@ -12,6 +12,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Removed
 
+## [2.3.0] - 2024-02-06
+
+### Added 
+
+- Added feature for conditional blobless mepo clones of the model.  
+
 ## [2.2.0] - 2024-01-10
 
 ### Added
