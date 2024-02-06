@@ -12,7 +12,7 @@ parameters:
 
 steps:
   - when:
-    condition: << paramters.blobless_clone >>
+    condition: << parameters.blobless_clone >>
     steps:
       - run:
           name: "Mepo clone external repos with blobless"
