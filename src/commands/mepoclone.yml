@@ -11,9 +11,21 @@ parameters:
     default: false
 
 steps:
-  - run:
-      name: "Mepo clone external repos"
-      command: |
-        cd ${CIRCLE_WORKING_DIRECTORY}/<< parameters.repo >>
-        mepo clone \<< parameters.blobless_clone && "--partial blobless" >>
-        mepo status
+  - when:
+    condition: << paramters.blobless_clone >> 
+    steps:
+      - run:
+          name: "Mepo clone external repos with blobless"
+          command: |
+            cd cd ${CIRCLE_WORKING_DIRECTORY}/<< parameters.repo >>
+            mepo clone --partial blobless
+            mepo status
+  - unless:
+    condition: << parameters.blobless_clone >>
+    steps:
+      - run:
+          name: "Mepo clone external repos without blobless"
+          command: |
+            cd ${CIRCLE_WORKING_DIRECTORY}/<< parameters.repo >>
+            mepo clone
+            mepo status
