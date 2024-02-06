@@ -169,7 +169,7 @@ steps:
             repo: << parameters.repo >>
   - mepoclone:
       repo: << parameters.repo >>
-      blobless_flag: << parameters.blobless_flag >>
+      blobless_clone << parameters.blobless_clone >>
   - when:
       condition: << parameters.mepodevelop >>
       steps:
