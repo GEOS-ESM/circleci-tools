@@ -6,7 +6,7 @@ parameters:
     type: string
     default: GEOSgcm
   blobless_clone:
-    description: "Optional blobless flag" 
+    description: "Optional blobless flag"
     type: boolean
     default: false
 
