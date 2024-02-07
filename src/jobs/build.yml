@@ -63,6 +63,10 @@ parameters:
     description: "Target to build"
     type: string
     default: install
+  blobless_clone:
+    description: "Optional blobless flag"
+    type: boolean
+    default: true
   mepodevelop:
     description: "Run mepo develop"
     type: boolean
@@ -165,6 +169,7 @@ steps:
             repo: << parameters.repo >>
   - mepoclone:
       repo: << parameters.repo >>
+      blobless_clone: << parameters.blobless_clone >>
   - when:
       condition: << parameters.mepodevelop >>
       steps:

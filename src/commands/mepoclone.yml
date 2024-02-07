@@ -5,11 +5,28 @@ parameters:
     description: "Name of repository"
     type: string
     default: GEOSgcm
+  blobless_clone:
+    description: "Optional blobless flag"
+    type: boolean
+    default: true
 
 steps:
-  - run:
-      name: "Mepo clone external repos"
-      command: |
-        cd ${CIRCLE_WORKING_DIRECTORY}/<< parameters.repo >>
-        mepo clone
-        mepo status
+  - when:
+      condition: << parameters.blobless_clone >>
+      steps:
+        - run:
+            name: "Mepo clone external repos with blobless"
+            command: |
+              cd ${CIRCLE_WORKING_DIRECTORY}/<< parameters.repo >>
+              mepo clone --partial blobless
+              mepo status
+  - unless:
+      condition: << parameters.blobless_clone >>
+      steps:
+        - run:
+            name: "Mepo clone external repos without blobless"
+            command: |
+              cd ${CIRCLE_WORKING_DIRECTORY}/<< parameters.repo >>
+              mepo clone
+              mepo status
+
