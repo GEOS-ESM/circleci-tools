@@ -8,6 +8,6 @@ parameters:
     type: string
 
 machine:
-  image: ubuntu-2204:2022.04.2
+  image: default
 
 resource_class: << parameters.resource_class >>

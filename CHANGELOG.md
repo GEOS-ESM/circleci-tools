@@ -12,11 +12,18 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Removed
 
+## [2.4.0] - 2024-02-23
+
+### Changed
+
+- Due to [Linux image deprecations by CircleCI](https://discuss.circleci.com/t/linux-image-deprecations-and-eol-for-2024/50177), we
+  have updated the docker executor to use the `default` image.
+
 ## [2.3.0] - 2024-02-07
 
-### Added 
+### Added
 
-- Added feature for conditional blobless mepo clones of the model.  
+- Added feature for conditional blobless mepo clones of the model.
 
 ## [2.2.0] - 2024-01-10
 
