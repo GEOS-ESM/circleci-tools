@@ -12,7 +12,7 @@ parameters:
     type: string
 
 docker:
-  - image: gmao/ubuntu20-geos-env-mkl:<< parameters.baselibs_version >>-openmpi_5.0.0-gcc_12.1.0
+  - image: gmao/ubuntu20-geos-env-mkl:<< parameters.baselibs_version >>-openmpi_5.0.2-gcc_13.2.0
     auth:
       username: $DOCKERHUB_USER
       password: $DOCKERHUB_AUTH_TOKEN

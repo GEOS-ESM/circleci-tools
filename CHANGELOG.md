@@ -12,6 +12,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Removed
 
+## [2.6.0] - 2024-04-04
+
+### Changed
+
+- Updated to GCC 13.2.0 and Open MPI 5.0.2 on the GNU executor
+
 ## [2.5.0] - 2024-04-03
 
 ### Changed
