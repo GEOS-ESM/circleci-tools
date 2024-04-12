@@ -79,6 +79,10 @@ parameters:
     description: "Checkout MAPL branch"
     type: boolean
     default: false
+  checkout_if_exists:
+    description: "Run mepo checkout-if-exists"
+    type: boolean
+    default: true
   persist_workspace:
     description: "Persist the workspace?"
     type: boolean
@@ -186,8 +190,8 @@ steps:
       steps:
         - checkout_mapl_branch:
             repo: << parameters.repo >>
-  - unless:
-      condition: << parameters.checkout_mapl_branch >>
+  - when:
+      condition: << parameters.checkout_if_exists >>
       steps:
         - checkout_if_exists:
             repo: << parameters.repo >>
