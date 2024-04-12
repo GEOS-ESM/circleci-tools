@@ -12,6 +12,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Removed
 
+## [2.7.0] - 2024-04-12
+
+### Added
+
+- Added `checkout_if_exists` option to `build.yml`. This gives the option to turn off `mepo checkout-if-exists` (needed for LDAS workflow). By default, it is `true`.
+
 ## [2.6.0] - 2024-04-04
 
 ### Changed
