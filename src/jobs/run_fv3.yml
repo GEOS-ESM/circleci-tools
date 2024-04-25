@@ -18,7 +18,7 @@ parameters:
     enum: ["medium", "large", "xlarge"]
   baselibs_version:
     type: string
-    default: v7.24.0
+    default: v7.23.0
     description: "Baselibs version to use"
   workspace_root:
     description: "Workspace root"

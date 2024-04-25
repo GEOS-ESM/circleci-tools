@@ -12,6 +12,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Removed
 
+## [2.9.0] - 2024-04-25
+
+### Changed
+
+- Revert back to Baselibs v7.23.0
+  - GCC 13 oddities are appearing in testing
+
 ## [2.8.0] - 2024-04-25
 
 ### Changed
