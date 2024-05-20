@@ -12,6 +12,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Removed
 
+## [3.0.0] - 2024-05-20
+
+### Changed
+
+- Updated to Baselibs v8.0.2
+
 ## [2.9.0] - 2024-04-25
 
 ### Changed
