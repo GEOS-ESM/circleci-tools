@@ -16,7 +16,7 @@ parameters:
     type: string
 
 docker:
-  - image: gmao/ubuntu20-geos-env-bcs:<< parameters.baselibs_version >>-intelmpi_2021.12-intel_2024.1-bcs_<< parameters.bcs_version >>
+  - image: gmao/ubuntu20-geos-env-bcs:<< parameters.baselibs_version >>-intelmpi_2021.11-intel_2024.0-bcs_<< parameters.bcs_version >>
     auth:
       username: $DOCKERHUB_USER
       password: $DOCKERHUB_AUTH_TOKEN

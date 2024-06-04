@@ -16,7 +16,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
-- Move to use Intel 2024.1 and Intel MPI 2021.12 on the Intel executor
+- Move to use Intel 2024.0 and Intel MPI 2021.11 on the Intel executor
 
 ## [3.0.0] - 2024-05-20
 
