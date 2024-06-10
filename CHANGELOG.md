@@ -12,6 +12,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Removed
 
+## [3.2.0] - 2024-06-10
+
+### Changed
+
+- Update to use BCs v11.5.0 by default
+  - Fixes `create_expt.py` to (eventually) support v12 BCS
+
 ## [3.1.0] - 2024-06-10
 
 ### Changed
