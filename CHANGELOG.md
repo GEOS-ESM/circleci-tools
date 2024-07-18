@@ -12,6 +12,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Removed
 
+## [3.3.0] - 2024-07-19
+
+### Changed
+
+- Update to Baselibs 8.5.0 by default
+- Update to Intel 2024.2 and Intel 2021.13 by default on the Intel executor
+
 ## [3.2.0] - 2024-06-10
 
 ### Changed
