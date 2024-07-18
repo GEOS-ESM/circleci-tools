@@ -8,7 +8,7 @@ parameters:
     type: string
   baselibs_version:
     description: "Version of Baselibs to use"
-    default: v7.23.0
+    default: v7.25.0
     type: string
   bcs_version:
     description: "Version of boundary conditions to use"
@@ -16,7 +16,7 @@ parameters:
     type: string
 
 docker:
-  - image: gmao/ubuntu20-geos-env-bcs:<< parameters.baselibs_version >>-intelmpi_2021.6.0-intel_2022.1.0-bcs_<< parameters.bcs_version >>
+  - image: gmao/ubuntu20-geos-env-bcs:<< parameters.baselibs_version >>-intelmpi_2021.13-intel_2024.2-bcs_<< parameters.bcs_version >>
     auth:
       username: $DOCKERHUB_USER
       password: $DOCKERHUB_AUTH_TOKEN
