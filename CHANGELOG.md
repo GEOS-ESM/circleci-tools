@@ -12,11 +12,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Removed
 
-## [2.11.0] - 2024-07-11
+## [2.11.0] - 2024-07-19
 
 ### Changed
 
 - Changed default to use Baselibs v7.25.0
+- Moved to use Intel 2024.2 (ifort 2021.13) and Intel MPI 2021.13
 
 ## [2.10.0] - 2024-06-10
 

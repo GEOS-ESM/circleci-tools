@@ -12,7 +12,7 @@ parameters:
     type: string
 
 docker:
-  - image: gmao/ubuntu20-geos-env:<< parameters.baselibs_version >>-intelmpi_2021.6.0-intel_2022.1.0
+  - image: gmao/ubuntu20-geos-env:<< parameters.baselibs_version >>-intelmpi_2021.13-intel_2024.2
     auth:
       username: $DOCKERHUB_USER
       password: $DOCKERHUB_AUTH_TOKEN
