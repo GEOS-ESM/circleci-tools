@@ -11,7 +11,7 @@ These are named to match the Fortran compiler.
 They have on two optional parameters:
 
 1. `resource_class` which defaults to `large`
-2. `baselibs_version` which defaults to `v8.0.2`
+2. `baselibs_version` which defaults to `v8.5.0`
 3. `bcs_version` which defaults to `v11.5.0`
 
 ## See:
