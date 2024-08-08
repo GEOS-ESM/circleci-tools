@@ -43,9 +43,9 @@ parameters:
     description: "Base Docker Image Name"
   compiler_name:
     type: enum
-    default: intel
+    default: ifort
     description: "Compiler Name on image"
-    enum: ["intel", "gcc"]
+    enum: ["ifort", "gcc", "ifx"]
   compiler_version:
     type: string
     default: ""
