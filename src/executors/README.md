@@ -5,6 +5,7 @@ CircleCI jobs. We currently define two executors:
 
 1. gfortran
 2. ifort
+3. ifx
 
 These are named to match the Fortran compiler.
 

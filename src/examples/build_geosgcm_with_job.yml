@@ -12,7 +12,7 @@ usage:
             name: build-GEOSgcm-on-<< matrix.compiler >>
             matrix:
               parameters:
-                compiler: [gfortran, ifort]
+                compiler: [gfortran, ifort, ifx]
             repo: GEOSgcm
             checkout_fixture: true
             context:
