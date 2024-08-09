@@ -1,0 +1,20 @@
+description: >
+  GEOS-ESM ifx docker executor
+
+parameters:
+  resource_class:
+    description: "Resource class to use"
+    default: large
+    type: string
+  baselibs_version:
+    description: "Version of Baselibs to use"
+    default: v7.25.0
+    type: string
+
+docker:
+  - image: gmao/ubuntu20-geos-env:<< parameters.baselibs_version >>-intelmpi_2021.13-ifx_2024.2
+    auth:
+      username: $DOCKERHUB_USER
+      password: $DOCKERHUB_AUTH_TOKEN
+
+resource_class: << parameters.resource_class >>
