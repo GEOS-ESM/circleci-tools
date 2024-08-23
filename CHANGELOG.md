@@ -6,9 +6,18 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [4.0.0] - 2024-08-23
+
+Note: This is a major version bump due to the change from `intel` to `ifort` and `ifx` executors.
+So older v2 based CI will need to change their `.circleci/config.yml` to use the new executors.
+
 ### Added
 
+- Added new `ifx` executor as we transition from `ifort` to `ifx`
+
 ### Changed
+
+- Changed the `ifort` executor to use newly named Docker images
 
 ### Removed
 
