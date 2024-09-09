@@ -45,6 +45,11 @@ parameters:
     type: enum
     enum: ["o1", "MOM6"]
     default: o1
+  landbcs_type:
+    description: "Land BCs type for gcm experiment"
+    type: enum
+    enum: ["NL3", "v12"]
+    default: v12
   change_layout:
     description: "Change layout to 1x6 (true for amip, false for coupled)"
     type: boolean
@@ -68,6 +73,7 @@ steps:
       gcm_horz_resolution: << parameters.gcm_horz_resolution >>
       gcm_vert_resolution: << parameters.gcm_vert_resolution >>
       gcm_ocean_type: << parameters.gcm_ocean_type >>
+      landbcs_type: << parameters.landbcs_type >>
   - run_makeoneday:
       repo: << parameters.repo >>
       workspace_root: << parameters.workspace_root >>

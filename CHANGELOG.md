@@ -13,6 +13,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Move to use BCs v12.0.0 by default
   - Directory for these is `TinyBCs-GitV12`
   - Move to 181 levels by default
+- Added `landbcs_type` to `create_gcm_expt` command and `run_gcm` job
 
 ## [5.0.0] - 2024-08-23
 
