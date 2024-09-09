@@ -22,7 +22,7 @@ parameters:
     description: "Baselibs version to use"
   bcs_version:
     type: string
-    default: v11.6.0
+    default: v12.0.0
     description: "Boundary condition version to use"
   workspace_root:
     description: "Workspace root"
@@ -39,7 +39,7 @@ parameters:
   gcm_vert_resolution:
     description: "Vertical resolution for gcm experiment"
     type: integer
-    default: 72
+    default: 181
   gcm_ocean_type:
     description: "Ocean type for gcm experiment"
     type: enum

@@ -26,7 +26,7 @@ steps:
             name: "Run makeoneday, change layout to 1x6"
             command: |
               cd ${CIRCLE_WORKING_DIRECTORY}/<< parameters.workspace_root >>/<< parameters.gcm_experiment_name >>
-              /TinyBCs-GitV10/scripts/makeoneday.bash 1hr nxy 1 6 noext
+              /TinyBCs-GitV12/scripts/makeoneday.bash 1hr nxy 1 6 noext
   - unless:
       condition: << parameters.change_layout >>
       steps:
@@ -34,4 +34,4 @@ steps:
             name: "Run makeoneday"
             command: |
               cd ${CIRCLE_WORKING_DIRECTORY}/<< parameters.workspace_root >>/<< parameters.gcm_experiment_name >>
-              /TinyBCs-GitV10/scripts/makeoneday.bash 1hr noext
+              /TinyBCs-GitV12/scripts/makeoneday.bash 1hr noext
