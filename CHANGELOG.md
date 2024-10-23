@@ -6,6 +6,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [4.1.0] - 2024-10-24
+
+### Changed
+
+- Changed default to use Baselibs v7.27.0
+
 ## [4.0.0] - 2024-08-23
 
 Note: This is a major version bump due to the change from `intel` to `ifort` and `ifx` executors.
