@@ -6,6 +6,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [4.2.0] - 2024-10-31
+
+### Changed
+
+- Update to use GCC 14.2 and Open MPI 5.0.5 for gfortran executors
+
 ## [4.1.0] - 2024-10-28
 
 ### Changed
