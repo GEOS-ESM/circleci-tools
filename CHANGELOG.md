@@ -6,6 +6,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [5.4.0] - 2024-10-31
+
+### Changed
+
+- Move to use GCC 14.2 and Open MPI 5.0.5 in GNU executor
+
 ## [5.3.0] - 2024-10-28
 
 ### Changed
