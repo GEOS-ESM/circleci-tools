@@ -103,6 +103,10 @@ parameters:
     description: "Remove pFlogger from Baselibs"
     type: boolean
     default: false
+  remove_pfunit:
+    description: "Remove pFUnit from Baselibs"
+    type: boolean
+    default: false
 
 
 executor:
@@ -147,6 +151,21 @@ steps:
             # 1. delete any directory that starts with PFLOGGER
             command: |
               find /baselibs/ -type d -name PFLOGGER* -exec rm -rf {} +
+
+  # For some cases to be correctly handled, we need to remove pFUnit from Baselibs
+  - when:
+      condition: << parameters.remove_pfunit >>
+      steps:
+        - run:
+            name: Remove pFUnit from Baselibs
+            # We now need to delete files from the baselibs
+            # install but we don't know the exact path (different on
+            # different executors). So we use find to locate the
+            # files and then delete them.
+            #
+            # 1. delete any directory that starts with PFUNIT
+            command: |
+              find /baselibs/ -type d -name PFUNIT* -exec rm -rf {} +
 
   # If we have to checkout a fixture, do that...
   - when:
