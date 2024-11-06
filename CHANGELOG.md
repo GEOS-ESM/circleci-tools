@@ -6,6 +6,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [4.3.0] - 2024-11-07
+
+### Added
+
+- Added new `remove_pfunit` option to the build job to remove PFUnit from the build (allowing testing of an edge case in MAPL)
+
 ## [4.2.0] - 2024-10-31
 
 ### Changed
