@@ -6,6 +6,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [5.7.0] - 2024-11-26
+
+### Changed
+
+- The build job now defaults to the `xlarge` resource class. It was found `ifx` jobs required more memory.
+
 ## [5.6.0] - 2024-11-19
 
 ### Changed
