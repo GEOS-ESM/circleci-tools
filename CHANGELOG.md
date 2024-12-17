@@ -6,6 +6,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [5.8.0] - 2024-12-18
+
+### Changed
+
+- Move to Ubuntu 24 images/executors by default
+
 ## [5.7.0] - 2024-11-26
 
 ### Changed
