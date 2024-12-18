@@ -34,9 +34,9 @@ parameters:
     enum: ["medium", "large", "xlarge"]
   os_version:
     type: enum
-    default: ubuntu20
+    default: ubuntu24
     description: "Operating System"
-    enum: ["ubuntu20"]
+    enum: ["ubuntu20", "ubuntu24"]
   image_name:
     type: string
     default: ""
