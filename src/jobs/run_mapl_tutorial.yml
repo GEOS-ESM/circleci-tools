@@ -27,6 +27,11 @@ parameters:
   tutorial_name:
     description: "Name of tutorial"
     type: string
+  build_type:
+    description: Build type for CMake. Must be one of "Debug", "Release", or "Aggressive"
+    type: enum
+    default: "Debug"
+    enum: ["Debug", "Release", "Aggressive"]
 
 executor:
   name: << parameters.compiler >>
