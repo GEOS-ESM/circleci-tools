@@ -8,6 +8,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
+## [4.8.0] - 2025-01-17
+
+### Changed
+
 - Added `build_type` to `run_mapl_tutorial` for matrix purposes
 
 ## [4.7.0] - 2025-01-15
