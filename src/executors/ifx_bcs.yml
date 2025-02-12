@@ -8,7 +8,7 @@ parameters:
     type: string
   baselibs_version:
     description: "Version of Baselibs to use"
-    default: v8.12.0
+    default: v8.13.0
     type: string
   bcs_version:
     description: "Version of boundary conditions to use"
