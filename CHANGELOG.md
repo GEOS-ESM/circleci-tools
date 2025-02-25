@@ -8,6 +8,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
+## [4.10.0] - 2025-02-25
+
+### Changed
+
+- Changed default to use Baselibs v7.32.0
+
 ## [4.9.0] - 2025-02-07
 
 ### Changed
