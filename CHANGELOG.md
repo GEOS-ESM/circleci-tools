@@ -8,6 +8,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
+## [5.15.0] - 2025-04-07
+
+### Changed
+
+- Revert to using `large` resource class for the build job (was doubling costs unnecessarily)
+
 ## [5.14.0] - 2025-02-12
 
 ### Changed
