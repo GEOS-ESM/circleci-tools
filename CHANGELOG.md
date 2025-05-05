@@ -8,6 +8,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
+## [5.17.0] - 2025-05-06
+
+### Changed
+
+- Updated ifx executor to use Intel 2025.1 and Intel MPI 2021.15
+
 ## [5.16.0] - 2025-04-24
 
 ### Changed
