@@ -29,8 +29,8 @@ parameters:
   landbcs_type:
     description: "Land BCs type for gcm experiment"
     type: enum
-    enum: ["NL3", "v13"]
-    default: v13
+    enum: ["NL3", "v12", "v13"]
+    default: v12
 
 steps:
   - run:
