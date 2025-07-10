@@ -9,6 +9,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
+- Update the GNU executor to use GCC 15.1.0 and Open MPI 5.0.8
+
 ## [5.18.0] - 2025-07-01
 
 ### Changed
