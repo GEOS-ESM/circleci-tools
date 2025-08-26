@@ -9,7 +9,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
-- Updated to Baselibs 8.16.0 by default
+- Updated to Baselibs 8.18.0 by default
 - Update the GNU executor to use GCC 15.1.0 and Open MPI 5.0.8
 - Update the Ifx executor to use Intel 2025.2 and Intel MPI 2021.16
 
