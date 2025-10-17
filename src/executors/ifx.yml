@@ -8,11 +8,11 @@ parameters:
     type: string
   baselibs_version:
     description: "Version of Baselibs to use"
-    default: v8.19.0
+    default: v8.20.0
     type: string
 
 docker:
-  - image: gmao/ubuntu24-geos-env:<< parameters.baselibs_version >>-intelmpi_2021.15-ifx_2025.1
+  - image: gmao/ubuntu24-geos-env:<< parameters.baselibs_version >>-intelmpi_2021.16-ifx_2025.2
     auth:
       username: $DOCKERHUB_USER
       password: $DOCKERHUB_AUTH_TOKEN
