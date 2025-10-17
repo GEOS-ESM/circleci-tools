@@ -18,7 +18,7 @@ parameters:
     enum: ["medium", "large", "xlarge"]
   baselibs_version:
     type: string
-    default: v8.19.0
+    default: v8.20.0
     description: "Baselibs version to use"
   bcs_version:
     type: string
