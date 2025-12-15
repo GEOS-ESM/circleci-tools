@@ -118,6 +118,7 @@ executor:
   name: << parameters.compiler >>
   resource_class: << parameters.resource_class >>
   baselibs_version: << parameters.baselibs_version >>
+  blas_lib: << parameters.blas_lib >>
 
 working_directory: /root/project
 
