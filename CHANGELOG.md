@@ -10,7 +10,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
-- Update gfortran executor to use OpenBLAS instead of MKL
+- Update gfortran executor to allow for using either OpenBLAS or MKL via `blas_lib` parameter (Default: `blas`)
 
 ## [4.16.0] - 2025-10-17
 
