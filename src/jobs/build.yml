@@ -107,6 +107,11 @@ parameters:
     description: "Remove pFUnit from Baselibs"
     type: boolean
     default: false
+  blas_lib:
+    type: enum
+    default: blas
+    description: "Blas library to use"
+    enum: ["blas", "mkl"]
 
 
 executor:
