@@ -6,6 +6,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [4.17.0] - 2025-12-17
+
+### Changede
+
+- Update ifx executor to use Intel 2025.3 and Intel MPI 2021.17
+
 ## [4.16.0] - 2025-10-17
 
 ### Changed
