@@ -6,9 +6,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [4.18.0] - 2025-12-19
+
+### Changed
+
+- Update to Baselibs v8.24.0 by default
+
 ## [4.17.0] - 2025-12-17
 
-### Changede
+### Changed
 
 - Update ifx executor to use Intel 2025.3 and Intel MPI 2021.17
 
