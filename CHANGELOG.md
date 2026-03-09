@@ -7,6 +7,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [6.3.0] - 2026-03-09
+
+### Changed
+
+- Update default ocean to `o2`
+
 ## [6.2.0] - 2025-12-19
 
 ### Changed
