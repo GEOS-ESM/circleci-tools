@@ -7,6 +7,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [5.25.0] - 2026-03-18
+
+### Changed
+
+- Update to Baselibs 8.27.0 by default
+
 ## [5.24.0] - 2026-03-09
 
 ### Changed
