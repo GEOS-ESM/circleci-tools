@@ -61,7 +61,7 @@ parameters:
     description: "MPI Version on image"
   baselibs_version:
     type: string
-    default: v9.4.0
+    default: v9.7.1
     description: "Baselibs version to use"
   bcs_version:
     type: string
