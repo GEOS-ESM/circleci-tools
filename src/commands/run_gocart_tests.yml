@@ -21,9 +21,9 @@ steps:
         ln -s ${CIRCLE_WORKING_DIRECTORY}/<< parameters.workspace_root >>/install-<< parameters.repo >>/etc/GOCART2G_GridComp.yaml
         ln -s ${CIRCLE_WORKING_DIRECTORY}/<< parameters.workspace_root >>/install-<< parameters.repo >>/etc/SS2G_instance_SS.yaml SS_instance_SS.yaml
         ln -s ${CIRCLE_WORKING_DIRECTORY}/<< parameters.workspace_root >>/install-<< parameters.repo >>/etc/DU2G_instance_DU.yaml DU_instance_DU.yaml
-        ln -s /TinyBCs-GitV10/gocart-ci-run/cap_restart.yaml
-        ln -s /TinyBCs-GitV10/gocart-ci-run/cap.yaml
-        ln -s /TinyBCs-GitV10/gocart-ci-run/fake-parent.yaml
-        ln -s /TinyBCs-GitV10/gocart-ci-run/ExtData .
-        cp -r /TinyBCs-GitV10/gocart-ci-run/checkpoints .
+        ln -s /TinyBCs-GitV12/gocart-ci-run/cap_restart.yaml
+        ln -s /TinyBCs-GitV12/gocart-ci-run/cap.yaml
+        ln -s /TinyBCs-GitV12/gocart-ci-run/fake-parent.yaml
+        ln -s /TinyBCs-GitV12/gocart-ci-run/ExtData .
+        cp -r /TinyBCs-GitV12/gocart-ci-run/checkpoints .
         mpirun -np 6 ${CIRCLE_WORKING_DIRECTORY}/<< parameters.workspace_root >>/install-<< parameters.repo >>/bin/GEOS.x cap.yaml |& tee /logfiles/gocart-tests.log
