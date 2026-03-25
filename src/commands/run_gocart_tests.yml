@@ -17,6 +17,7 @@ steps:
         mkdir -p /logfiles
         mkdir -p ${CIRCLE_WORKING_DIRECTORY}/<< parameters.workspace_root >>/gocart-tests
         cd ${CIRCLE_WORKING_DIRECTORY}/<< parameters.workspace_root >>/gocart-tests
+        export LD_LIBRARY_PATH="${LD_LIBRARY_PATH:+${LD_LIBRARY_PATH}:}${CIRCLE_WORKING_DIRECTORY}/<< parameters.workspace_root >>/install-<< parameters.repo >>/lib"
         ln -s ${CIRCLE_WORKING_DIRECTORY}/<< parameters.workspace_root >>/install-<< parameters.repo >>/etc/GOCART2G_GridComp.yaml
         ln -s ${CIRCLE_WORKING_DIRECTORY}/<< parameters.workspace_root >>/install-<< parameters.repo >>/etc/SS2G_instance_SS.yaml SS_instance_SS.yaml
         ln -s ${CIRCLE_WORKING_DIRECTORY}/<< parameters.workspace_root >>/install-<< parameters.repo >>/etc/DU2G_instance_DU.yaml DU_instance_DU.yaml
