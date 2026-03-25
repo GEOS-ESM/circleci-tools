@@ -25,4 +25,4 @@ steps:
         ln -s /TinyBCs-GitV10/gocart-ci-run/fake-parent.yaml
         ln -s /TinyBCs-GitV10/gocart-ci-run/ExtData .
         cp -r /TinyBCs-GitV10/gocart-ci-run/checkpoints .
-        mpirun -np 6 ${CIRCLE_WORKING_DIRECTORY}/install-<< parameters.repo >>/bin/GEOS.x cap.yaml |& tee /logfiles/gocart-tests.log
+        mpirun -np 6 ${CIRCLE_WORKING_DIRECTORY}/<< parameters.workspace_root >>/install-<< parameters.repo >>/bin/GEOS.x cap.yaml |& tee /logfiles/gocart-tests.log
