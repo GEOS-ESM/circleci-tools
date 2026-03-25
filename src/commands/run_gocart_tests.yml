@@ -17,9 +17,9 @@ steps:
         mkdir -p /logfiles
         mkdir -p ${CIRCLE_WORKING_DIRECTORY}/<< parameters.workspace_root >>/gocart-tests
         cd ${CIRCLE_WORKING_DIRECTORY}/<< parameters.workspace_root >>/gocart-tests
-        ln -s ${CIRCLE_WORKING_DIRECTORY}/install-<< parameters.repo >>/etc/GOCART2G_GridComp.yaml
-        ln -s ${CIRCLE_WORKING_DIRECTORY}/install-<< parameters.repo >>/etc/SS2G_instance_SS.yaml SS_instance_SS.yaml
-        ln -s ${CIRCLE_WORKING_DIRECTORY}/install-<< parameters.repo >>/etc/DU2G_instance_DU.yaml DU_instance_DU.yaml
+        ln -s ${CIRCLE_WORKING_DIRECTORY}/<< parameters.workspace_root >>/install-<< parameters.repo >>/etc/GOCART2G_GridComp.yaml
+        ln -s ${CIRCLE_WORKING_DIRECTORY}/<< parameters.workspace_root >>/install-<< parameters.repo >>/etc/SS2G_instance_SS.yaml SS_instance_SS.yaml
+        ln -s ${CIRCLE_WORKING_DIRECTORY}/<< parameters.workspace_root >>/install-<< parameters.repo >>/etc/DU2G_instance_DU.yaml DU_instance_DU.yaml
         ln -s /TinyBCs-GitV10/gocart-ci-run/cap_restart.yaml
         ln -s /TinyBCs-GitV10/gocart-ci-run/cap.yaml
         ln -s /TinyBCs-GitV10/gocart-ci-run/fake-parent.yaml
