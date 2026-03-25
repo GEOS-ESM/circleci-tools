@@ -1,0 +1,49 @@
+description: >
+  Run GOCART tests. Requires a workspace persisted from the build job
+  containing the installed bin/, lib/, and etc/ directories.
+
+parameters:
+  repo:
+    type: string
+    default: GEOSgcm
+    description: "Name of the repo to act upon"
+  compiler:
+    type: enum
+    default: ifort
+    description: "Compiler to use"
+    enum: ["ifort", "gfortran", "ifx"]
+  resource_class:
+    type: enum
+    default: xlarge
+    description: "Resource class to use"
+    enum: ["medium", "large", "xlarge"]
+  baselibs_version:
+    type: string
+    default: v9.7.1
+    description: "Baselibs version to use"
+  bcs_version:
+    type: string
+    default: v12.0.0
+    description: "Boundary condition version to use"
+  workspace_root:
+    description: "Workspace root"
+    type: string
+    default: workspace
+
+executor:
+  name: << parameters.compiler >>_bcs
+  resource_class: << parameters.resource_class >>
+  baselibs_version: << parameters.baselibs_version >>
+  bcs_version: << parameters.bcs_version >>
+
+working_directory: /root/project
+
+steps:
+  - attach_workspace:
+      at: << parameters.workspace_root >>
+  - run_gocart_tests:
+      repo: << parameters.repo >>
+      workspace_root: << parameters.workspace_root >>
+  - compress_artifacts
+  - store_artifacts:
+      path: /logfiles
