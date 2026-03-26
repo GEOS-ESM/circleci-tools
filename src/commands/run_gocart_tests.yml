@@ -1,0 +1,29 @@
+description: "Run GOCART tests"
+
+parameters:
+  repo:
+    description: "Name of repository"
+    type: string
+    default: GEOSgcm
+  workspace_root:
+    description: "Root of workspace"
+    type: string
+    default: workspace
+
+steps:
+  - run:
+      name: "Run GOCART tests"
+      command: |
+        mkdir -p /logfiles
+        mkdir -p ${CIRCLE_WORKING_DIRECTORY}/<< parameters.workspace_root >>/gocart-tests
+        cd ${CIRCLE_WORKING_DIRECTORY}/<< parameters.workspace_root >>/gocart-tests
+        export LD_LIBRARY_PATH="${LD_LIBRARY_PATH:+${LD_LIBRARY_PATH}:}${CIRCLE_WORKING_DIRECTORY}/<< parameters.workspace_root >>/install-<< parameters.repo >>/lib"
+        ln -s ${CIRCLE_WORKING_DIRECTORY}/<< parameters.workspace_root >>/install-<< parameters.repo >>/etc/GOCART2G_GridComp.yaml
+        ln -s ${CIRCLE_WORKING_DIRECTORY}/<< parameters.workspace_root >>/install-<< parameters.repo >>/etc/SS2G_instance_SS.yaml SS_instance_SS.yaml
+        ln -s ${CIRCLE_WORKING_DIRECTORY}/<< parameters.workspace_root >>/install-<< parameters.repo >>/etc/DU2G_instance_DU.yaml DU_instance_DU.yaml
+        ln -s /TinyBCs-GitV12/gocart-ci-run/cap_restart.yaml
+        ln -s /TinyBCs-GitV12/gocart-ci-run/cap.yaml
+        ln -s /TinyBCs-GitV12/gocart-ci-run/fake-parent.yaml
+        ln -s /TinyBCs-GitV12/gocart-ci-run/ExtData .
+        cp -r /TinyBCs-GitV12/gocart-ci-run/checkpoints .
+        mpirun -np 6 ${CIRCLE_WORKING_DIRECTORY}/<< parameters.workspace_root >>/install-<< parameters.repo >>/bin/GEOS.x cap.yaml |& tee /logfiles/gocart-tests.log

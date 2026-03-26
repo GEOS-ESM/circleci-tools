@@ -7,6 +7,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [6.5.0] - 2026-03-25
+
+### Added
+
+- Added new `run_gocart_tests` command and job to run GOCART tests against a MAPL3 GEOSgcm build
+- Update some sparse README.md files
+
 ## [6.4.0] - 2026-03-18
 
 ### Changed
