@@ -7,6 +7,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [6.7.0] - 2026-05-13
+
+### Changed
+
+- Added `run_regression_tests` to `build.yml`
+- Add `--output-on-failure` to `runtests.yml`
+
 ## [6.6.0] - 2026-04-22
 
 ### Changed
