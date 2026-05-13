@@ -15,4 +15,4 @@ steps:
       name: "Run tests"
       command: |
         cd ${CIRCLE_WORKING_DIRECTORY}/workspace/build-<< parameters.repo >>
-        ctest << parameters.ctest_options >> |& tee /logfiles/ctest.log
+        ctest --output-on-failure << parameters.ctest_options >> |& tee /logfiles/ctest.log

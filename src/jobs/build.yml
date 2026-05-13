@@ -55,6 +55,10 @@ parameters:
     description: "Boolean to trigger unit tests"
     type: boolean
     default: false
+  run_regression_tests:
+    description: "Boolean to trigger regression tests"
+    type: boolean
+    default: false
   ctest_options:
     description: "Options to pass to ctest"
     type: string
@@ -233,6 +237,12 @@ steps:
             repo: << parameters.repo >>
             rebuild_procs: << parameters.rebuild_procs >>
             cmake_generator: << parameters.cmake_generator >>
+  - when:
+      condition:
+        or:
+          - equal: [ true, << parameters.run_unit_tests >> ]
+          - equal: [ true, << parameters.run_regression_tests >> ]
+      steps:
         - runtests:
             repo: << parameters.repo >>
             ctest_options: << parameters.ctest_options >>
