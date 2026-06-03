@@ -16,7 +16,7 @@ parameters:
     type: enum
     default: xlarge
     description: "Resource class to use"
-    enum: ["medium", "large", "xlarge"]
+    enum: ["medium", "large", "xlarge", "medium.gen2", "large.gen2", "xlarge.gen2"]
   baselibs_version:
     type: string
     default: v8.32.0

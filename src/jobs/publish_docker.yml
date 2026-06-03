@@ -31,7 +31,7 @@ parameters:
     type: enum
     default: large
     description: "Resource class to use"
-    enum: ["medium", "large", "xlarge"]
+    enum: ["medium", "large", "xlarge", "medium.gen2", "large.gen2", "xlarge.gen2"]
   os_version:
     type: enum
     default: ubuntu24
