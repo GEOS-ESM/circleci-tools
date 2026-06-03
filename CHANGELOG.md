@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Changed
+
+- Added ability to use gen2 resources
+
 ## [5.29.0] - 2026-06-02
 
 ### Changed
