@@ -26,7 +26,7 @@ steps:
         fi
 
         mepo checkout ${CIRCLE_BRANCH} MAPL
-        if [ "${CIRCLE_BRANCH}" != "develop" ] && [ "${CIRCLE_BRANCH}" != "main" ]
+        if [ "${CIRCLE_BRANCH}" != "develop" ] && [ "${CIRCLE_BRANCH}" != "main" ] && [[ "${CIRCLE_BRANCH}" != release/v* ]]
         then
             mepo checkout-if-exists ${CIRCLE_BRANCH}
         fi
