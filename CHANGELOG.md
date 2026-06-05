@@ -7,6 +7,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [6.9.0] - 2026-06-05
+
+### Changed
+
+- Branch exclusion commands (`checkout_mapl_branch`, `checkout_if_exists`, `checkout_feature_branch_on_fixture_allow_fail`) now also skip feature-branch checkout logic for `release/v*` branches
+
 ## [6.8.0] - 2026-06-02
 
 ### Changed
