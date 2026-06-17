@@ -28,8 +28,27 @@ steps:
         - run:
             name: "Build target << parameters.target >> (retry after fail) - GNU Make"
             command: |
+              # Determine actual number of available vCPUs
+              num_procs=""
+              if [ -f /sys/fs/cgroup/cpu.max ]; then
+                read -r quota period < /sys/fs/cgroup/cpu.max
+                if [ "$quota" != "max" ] && [ "$period" -gt 0 ]; then
+                  num_procs=$(( quota / period ))
+                fi
+              elif [ -f /sys/fs/cgroup/cpu/cpu.cfs_quota_us ] && [ -f /sys/fs/cgroup/cpu/cpu.cfs_period_us ]; then
+                quota=$(cat /sys/fs/cgroup/cpu/cpu.cfs_quota_us)
+                period=$(cat /sys/fs/cgroup/cpu/cpu.cfs_period_us)
+                if [ "$quota" -gt 0 ] && [ "$period" -gt 0 ]; then
+                  num_procs=$(( quota / period ))
+                fi
+              fi
+              if [ -z "$num_procs" ] || [ "$num_procs" -le 0 ]; then
+                num_procs=$(nproc)
+              fi
+              echo "Building with $num_procs processes..."
+
               cd ${CIRCLE_WORKING_DIRECTORY}/workspace/build-<< parameters.repo >>
-              make -j "$(nproc)" << parameters.target >> |& tee /logfiles/make.log || make -j << parameters.rebuild_procs >> << parameters.target >> |& tee /logfiles/make-retry.log
+              make -j "$num_procs" << parameters.target >> |& tee /logfiles/make.log || make -j << parameters.rebuild_procs >> << parameters.target >> |& tee /logfiles/make-retry.log
 
   - unless:
       condition:
@@ -40,5 +59,24 @@ steps:
         - run:
             name: "Build target << parameters.target >> (retry after fail) - Ninja"
             command: |
+              # Determine actual number of available vCPUs
+              num_procs=""
+              if [ -f /sys/fs/cgroup/cpu.max ]; then
+                read -r quota period < /sys/fs/cgroup/cpu.max
+                if [ "$quota" != "max" ] && [ "$period" -gt 0 ]; then
+                  num_procs=$(( quota / period ))
+                fi
+              elif [ -f /sys/fs/cgroup/cpu/cpu.cfs_quota_us ] && [ -f /sys/fs/cgroup/cpu/cpu.cfs_period_us ]; then
+                quota=$(cat /sys/fs/cgroup/cpu/cpu.cfs_quota_us)
+                period=$(cat /sys/fs/cgroup/cpu/cpu.cfs_period_us)
+                if [ "$quota" -gt 0 ] && [ "$period" -gt 0 ]; then
+                  num_procs=$(( quota / period ))
+                fi
+              fi
+              if [ -z "$num_procs" ] || [ "$num_procs" -le 0 ]; then
+                num_procs=$(nproc)
+              fi
+              echo "Building with $num_procs processes..."
+
               cd ${CIRCLE_WORKING_DIRECTORY}/workspace/build-<< parameters.repo >>
-              ninja -j "$(nproc)" << parameters.target >> |& tee /logfiles/ninja.log || ninja -j << parameters.rebuild_procs >> << parameters.target >> |& tee /logfiles/ninja-retry.log
+              ninja -j "$num_procs" << parameters.target >> |& tee /logfiles/ninja.log || ninja -j << parameters.rebuild_procs >> << parameters.target >> |& tee /logfiles/ninja-retry.log

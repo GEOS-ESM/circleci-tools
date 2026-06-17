@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Changed
+
+- Determine build CPU count dynamically using cgroups (v1/v2 CFS limit) instead of physical host CPU count (`nproc`), preventing out-of-memory and CPU-throttling issues on CircleCI runners
+
 ## [5.30.0] - 2026-06-05
 
 ### Changed
