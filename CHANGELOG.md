@@ -11,6 +11,18 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Added ability to use gen2 resources
 
+## [5.31.0] - 2026-06-17
+
+### Changed
+
+- Determine build CPU count dynamically using cgroups (v1/v2 CFS limit) instead of physical host CPU count (`nproc`), preventing out-of-memory and CPU-throttling issues on CircleCI runners
+
+## [5.30.0] - 2026-06-05
+
+### Changed
+
+- Branch exclusion commands (`checkout_mapl_branch`, `checkout_if_exists`, `checkout_feature_branch_on_fixture_allow_fail`) now also skip feature-branch checkout logic for `release/v*` branches
+
 ## [5.29.0] - 2026-06-02
 
 ### Changed

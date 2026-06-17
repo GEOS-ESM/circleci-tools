@@ -15,7 +15,7 @@ steps:
       name: "Checkout branch on fixture on feature, allow failure"
       command: |
         cd ${CIRCLE_WORKING_DIRECTORY}/<< parameters.repo >>
-        if [ "${CIRCLE_BRANCH}" != "develop" ] && [ "${CIRCLE_BRANCH}" != "main" ]
+        if [ "${CIRCLE_BRANCH}" != "develop" ] && [ "${CIRCLE_BRANCH}" != "main" ] && [[ "${CIRCLE_BRANCH}" != release/v* ]]
         then
            git checkout ${CIRCLE_BRANCH} || true
         fi

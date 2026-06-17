@@ -12,7 +12,7 @@ steps:
       command: |
         cd ${CIRCLE_WORKING_DIRECTORY}/<< parameters.repo >>
         echo "Branch: ${CIRCLE_BRANCH}"
-        if [ "${CIRCLE_BRANCH}" != "develop" ] && [ "${CIRCLE_BRANCH}" != "main" ]
+        if [ "${CIRCLE_BRANCH}" != "develop" ] && [ "${CIRCLE_BRANCH}" != "main" ] && [[ "${CIRCLE_BRANCH}" != release/v* ]]
         then
            mepo checkout-if-exists ${CIRCLE_BRANCH}
         else
