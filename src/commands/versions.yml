@@ -10,4 +10,22 @@ steps:
   - run:
       name: "Versions, etc."
       command: |
-        mpirun --version && << parameters.compiler >> --version && echo $BASEDIR && pwd && ls && echo "$(nproc)"
+        # Determine actual number of available vCPUs
+        num_procs=""
+        if [ -f /sys/fs/cgroup/cpu.max ]; then
+          read -r quota period < /sys/fs/cgroup/cpu.max
+          if [ "$quota" != "max" ] && [ "$period" -gt 0 ]; then
+            num_procs=$(( quota / period ))
+          fi
+        elif [ -f /sys/fs/cgroup/cpu/cpu.cfs_quota_us ] && [ -f /sys/fs/cgroup/cpu/cpu.cfs_period_us ]; then
+          quota=$(cat /sys/fs/cgroup/cpu/cpu.cfs_quota_us)
+          period=$(cat /sys/fs/cgroup/cpu/cpu.cfs_period_us)
+          if [ "$quota" -gt 0 ] && [ "$period" -gt 0 ]; then
+            num_procs=$(( quota / period ))
+          fi
+        fi
+        if [ -z "$num_procs" ] || [ "$num_procs" -le 0 ]; then
+          num_procs=$(nproc)
+        fi
+
+        mpirun --version && << parameters.compiler >> --version && echo $BASEDIR && pwd && ls && echo "nproc: $(nproc)" && echo "Detected vCPUs: $num_procs"
