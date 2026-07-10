@@ -9,7 +9,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
-- Add creation of `~/.GEOSconfig.yaml` in home dir for `linkbcs.py` (see https://github.com/GEOS-ESM/GEOSgcm_App/pull/823)
+- Add creation of `~/.GEOSdefaults.yaml` in home dir for `linkbcs.py` (see https://github.com/GEOS-ESM/GEOSgcm_App/pull/823)
 
 ## [5.31.0] - 2026-06-17
 
