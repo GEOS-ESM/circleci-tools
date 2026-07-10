@@ -1,4 +1,4 @@
-description: "Mepo develop GEOSgcm_GridComp GEOSgcm_App GMAO_Shared"
+description: "Mepo develop GEOSgcm_GridComp GEOSgcm_App GMAO_Shared GEOS_Util FVdycoreCubed_GridComp"
 
 parameters:
   repo:
