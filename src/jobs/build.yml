@@ -78,7 +78,7 @@ parameters:
   develop_repos:
     description: "Repos to run mepo develop on"
     type: string
-    default: "GEOSgcm_GridComp GEOSgcm_App GMAO_Shared"
+    default: "GEOSgcm_GridComp GEOSgcm_App GMAO_Shared GEOS_Util FVdycoreCubed_GridComp"
   checkout_mapl_branch:
     description: "Checkout MAPL branch"
     type: boolean
