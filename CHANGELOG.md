@@ -7,32 +7,41 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
-## [6.10.0] - 2026-06-17
+## [6.12.0] - 2026-07-10
+
+### Changed
+
+- Add creation of `~/.GEOSdefaults.yaml` in the home directory for `linkbcs.py` (see https://github.com/GEOS-ESM/GEOSgcm_App/pull/823)
+- Add `GEOS_Util` and (temporarily) `FVdycoreCubed_GridComp` to the `mepo develop` list
+
+## [6.11.0] - 2026-06-17
 
 ### Changed
 
 - Determine build CPU count dynamically using cgroups (v1/v2 CFS limit) instead of physical host CPU count (`nproc`), preventing out-of-memory and CPU-throttling issues on CircleCI runners
 
-## [6.9.0] - 2026-06-05
+## [6.10.0] - 2026-06-05
 
 ### Changed
 
 - Branch exclusion commands (`checkout_mapl_branch`, `checkout_if_exists`, `checkout_feature_branch_on_fixture_allow_fail`) now also skip feature-branch checkout logic for `release/v*` branches
 
-## [6.8.0] - 2026-06-02
+## [6.9.0] - 2026-06-02
 
 ### Changed
 
 - Updated to Baselibs 9.12.0 by default
 
-## [6.7.0] - 2026-05-13
+## [6.8.0] - 2026-05-13
 
 ### Changed
 
 - Added `run_regression_tests` to `build.yml`
 - Add `--output-on-failure` to `runtests.yml`
 
-## [6.6.0] - 2026-04-22
+## [6.7.0] - 2026-04-22
+
+Version 6.6.0 was skipped in the published release tags.
 
 ### Changed
 
@@ -733,4 +742,3 @@ So older v3 based CI will need to change their `.circleci/config.yml` to use the
 - Updated `@orb.yml`
 - Updated license to GEOS Apache
 - Updated README
-
