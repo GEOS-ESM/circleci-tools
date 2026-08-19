@@ -1,0 +1,27 @@
+description: >
+  GEOS-ESM ifort docker executor with regression test data
+
+parameters:
+  resource_class:
+    description: "Resource class to use"
+    default: large
+    type: string
+  baselibs_version:
+    description: "Version of Baselibs to use"
+    default: v8.32.0
+    type: string
+  regression_version:
+    description: "Version of regression data to use"
+    default: v1.0.0
+    type: string
+
+docker:
+  - image: gmao/ubuntu24-geos-env-regression:<< parameters.baselibs_version >>-intelmpi_2021.13-ifort_2021.13-regression_<< parameters.regression_version >>
+    auth:
+      username: $DOCKERHUB_USER
+      password: $DOCKERHUB_AUTH_TOKEN
+
+environment:
+  LOCAL_REGRESSION_DATA_DIR: /regression-data
+
+resource_class: << parameters.resource_class >>

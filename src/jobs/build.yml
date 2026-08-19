@@ -20,6 +20,10 @@ parameters:
     type: string
     default: v8.32.0
     description: "Baselibs version to use"
+  regression_version:
+    type: string
+    default: v1.0.0
+    description: "Regression data version to use"
   checkout_fixture:
     type: boolean
     default: false
@@ -114,9 +118,10 @@ parameters:
 
 
 executor:
-  name: << parameters.compiler >>
+  name: << parameters.compiler >>_regression
   resource_class: << parameters.resource_class >>
   baselibs_version: << parameters.baselibs_version >>
+  regression_version: << parameters.regression_version >>
 
 working_directory: /root/project
 

@@ -7,6 +7,17 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [5.33.0] - 2026-08-19
+
+### Added
+
+- Added `gfortran_regression`, `ifort_regression`, and `ifx_regression` executors containing regression test data and `LOCAL_REGRESSION_DATA_DIR` environment variable
+- Added `regression_version` parameter to `build.yml`
+
+### Changed
+
+- Updated `build.yml` to use `<< parameters.compiler >>_regression` executor
+
 ## [5.32.0] - 2026-07-10
 
 ### Changed

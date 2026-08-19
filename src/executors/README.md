@@ -17,9 +17,15 @@ CircleCI jobs. Executors are named to match the Fortran compiler, with `_bcs` va
 5. [ifort_bcs.yml](./ifort_bcs.yml): GEOS-ESM ifort docker executor with boundary conditions
 6. [ifx_bcs.yml](./ifx_bcs.yml): GEOS-ESM ifx docker executor with boundary conditions
 
+### With Regression Test Data
+
+7. [gfortran_regression.yml](./gfortran_regression.yml): GEOS-ESM gfortran docker executor with regression test data
+8. [ifort_regression.yml](./ifort_regression.yml): GEOS-ESM ifort docker executor with regression test data
+9. [ifx_regression.yml](./ifx_regression.yml): GEOS-ESM ifx docker executor with regression test data
+
 ### Other
 
-7. [docker.yml](./docker.yml): Generic GEOS-ESM docker executor (used for Docker image publishing)
+10. [docker.yml](./docker.yml): Generic GEOS-ESM docker executor (used for Docker image publishing)
 
 ## Parameters
 
@@ -31,6 +37,10 @@ All compiler executors accept the following parameters:
 The `_bcs` variants additionally accept:
 
 - `bcs_version`: Version of boundary conditions to use (default: `v12.0.0`)
+
+The `_regression` variants additionally accept:
+
+- `regression_version`: Version of regression test data to use (default: `v1.0.0`)
 
 ## See:
  - [Orb Author Intro](https://circleci.com/docs/2.0/orb-author-intro/#section=configuration)
