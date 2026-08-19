@@ -1,4 +1,4 @@
-description: "Mepo develop GEOSgcm_GridComp GEOSgcm_App GMAO_Shared"
+description: "Mepo develop subrepos"
 
 parameters:
   repo:
@@ -8,7 +8,7 @@ parameters:
   subrepos:
     description: "Name of subrepos to run mepo develop on"
     type: string
-    default: "GEOSgcm_GridComp GEOSgcm_App GMAO_Shared"
+    default: "GEOSgcm_GridComp GEOSgcm_App GMAO_Shared GEOS_Util"
 
 steps:
   - run:
