@@ -17,6 +17,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Changed
 
 - Updated `build.yml` to use `<< parameters.compiler >>_regression` executor
+- Added `ulimit -s unlimited` to `runtests.yml`
 
 ## [6.10.0] - 2026-06-17
 
