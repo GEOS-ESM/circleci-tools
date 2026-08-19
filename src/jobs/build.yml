@@ -20,6 +20,10 @@ parameters:
     type: string
     default: v8.32.0
     description: "Baselibs version to use"
+  regression_version:
+    type: string
+    default: v1.0.0
+    description: "Regression data version to use"
   checkout_fixture:
     type: boolean
     default: false
@@ -67,6 +71,10 @@ parameters:
     description: "Target to build"
     type: string
     default: install
+  extra_buildtargets:
+    description: "Additional target(s) to build"
+    type: string
+    default: ""
   blobless_clone:
     description: "Optional blobless flag"
     type: boolean
@@ -114,9 +122,10 @@ parameters:
 
 
 executor:
-  name: << parameters.compiler >>
+  name: << parameters.compiler >>_regression
   resource_class: << parameters.resource_class >>
   baselibs_version: << parameters.baselibs_version >>
+  regression_version: << parameters.regression_version >>
 
 working_directory: /root/project
 
@@ -230,6 +239,14 @@ steps:
       rebuild_procs: << parameters.rebuild_procs >>
       target: << parameters.buildtarget >>
       cmake_generator: << parameters.cmake_generator >>
+  - when:
+      condition: << parameters.extra_buildtargets >>
+      steps:
+        - buildtarget:
+            repo: << parameters.repo >>
+            rebuild_procs: << parameters.rebuild_procs >>
+            target: << parameters.extra_buildtargets >>
+            cmake_generator: << parameters.cmake_generator >>
   - when:
       condition: << parameters.run_unit_tests >>
       steps:

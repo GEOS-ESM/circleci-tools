@@ -48,7 +48,7 @@ steps:
               echo "Building with $num_procs processes..."
 
               cd ${CIRCLE_WORKING_DIRECTORY}/workspace/build-<< parameters.repo >>
-              make -j "$num_procs" << parameters.target >> |& tee /logfiles/make.log || make -j << parameters.rebuild_procs >> << parameters.target >> |& tee /logfiles/make-retry.log
+              make -j "$num_procs" << parameters.target >> |& tee -a /logfiles/make.log || make -j << parameters.rebuild_procs >> << parameters.target >> |& tee -a /logfiles/make-retry.log
 
   - unless:
       condition:
@@ -79,4 +79,4 @@ steps:
               echo "Building with $num_procs processes..."
 
               cd ${CIRCLE_WORKING_DIRECTORY}/workspace/build-<< parameters.repo >>
-              ninja -j "$num_procs" << parameters.target >> |& tee /logfiles/ninja.log || ninja -j << parameters.rebuild_procs >> << parameters.target >> |& tee /logfiles/ninja-retry.log
+              ninja -j "$num_procs" << parameters.target >> |& tee -a /logfiles/ninja.log || ninja -j << parameters.rebuild_procs >> << parameters.target >> |& tee -a /logfiles/ninja-retry.log

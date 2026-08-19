@@ -14,5 +14,6 @@ steps:
   - run:
       name: "Run tests"
       command: |
+        ulimit -s unlimited
         cd ${CIRCLE_WORKING_DIRECTORY}/workspace/build-<< parameters.repo >>
         ctest --output-on-failure << parameters.ctest_options >> |& tee /logfiles/ctest.log
