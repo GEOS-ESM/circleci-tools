@@ -71,6 +71,10 @@ parameters:
     description: "Target to build"
     type: string
     default: install
+  extra_buildtargets:
+    description: "Additional target(s) to build"
+    type: string
+    default: ""
   blobless_clone:
     description: "Optional blobless flag"
     type: boolean
@@ -235,6 +239,14 @@ steps:
       rebuild_procs: << parameters.rebuild_procs >>
       target: << parameters.buildtarget >>
       cmake_generator: << parameters.cmake_generator >>
+  - when:
+      condition: << parameters.extra_buildtargets >>
+      steps:
+        - buildtarget:
+            repo: << parameters.repo >>
+            rebuild_procs: << parameters.rebuild_procs >>
+            target: << parameters.extra_buildtargets >>
+            cmake_generator: << parameters.cmake_generator >>
   - when:
       condition: << parameters.run_unit_tests >>
       steps:
