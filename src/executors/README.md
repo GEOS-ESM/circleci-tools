@@ -32,7 +32,7 @@ CircleCI jobs. Executors are named to match the Fortran compiler, with `_bcs` va
 All compiler executors accept the following parameters:
 
 - `resource_class`: Resource class to use (default: `large`)
-- `baselibs_version`: Version of Baselibs to use (default: `v9.12.0`)
+- `baselibs_version`: Version of Baselibs to use (default: `v9.13.0`)
 
 The `_bcs` variants additionally accept:
 
