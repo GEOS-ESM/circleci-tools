@@ -8,24 +8,27 @@ CircleCI jobs. Executors are named to match the Fortran compiler, with `_bcs` va
 ### Without Boundary Conditions
 
 1. [gfortran.yml](./gfortran.yml): GEOS-ESM gfortran (GCC) docker executor
-2. [ifort.yml](./ifort.yml): GEOS-ESM ifort (Intel classic) docker executor
-3. [ifx.yml](./ifx.yml): GEOS-ESM ifx (Intel LLVM) docker executor
+2. [gfortran-16.yml](./gfortran-16.yml): GEOS-ESM gfortran 16 docker executor
+3. [ifort.yml](./ifort.yml): GEOS-ESM ifort (Intel classic) docker executor
+4. [ifx.yml](./ifx.yml): GEOS-ESM ifx (Intel LLVM) docker executor
 
 ### With Boundary Conditions
 
-4. [gfortran_bcs.yml](./gfortran_bcs.yml): GEOS-ESM gfortran docker executor with boundary conditions
-5. [ifort_bcs.yml](./ifort_bcs.yml): GEOS-ESM ifort docker executor with boundary conditions
-6. [ifx_bcs.yml](./ifx_bcs.yml): GEOS-ESM ifx docker executor with boundary conditions
+5. [gfortran_bcs.yml](./gfortran_bcs.yml): GEOS-ESM gfortran docker executor with boundary conditions
+6. [gfortran-16_bcs.yml](./gfortran-16_bcs.yml): GEOS-ESM gfortran 16 docker executor with boundary conditions
+7. [ifort_bcs.yml](./ifort_bcs.yml): GEOS-ESM ifort docker executor with boundary conditions
+8. [ifx_bcs.yml](./ifx_bcs.yml): GEOS-ESM ifx docker executor with boundary conditions
 
 ### With Regression Test Data
 
-7. [gfortran_regression.yml](./gfortran_regression.yml): GEOS-ESM gfortran docker executor with regression test data
-8. [ifort_regression.yml](./ifort_regression.yml): GEOS-ESM ifort docker executor with regression test data
-9. [ifx_regression.yml](./ifx_regression.yml): GEOS-ESM ifx docker executor with regression test data
+9. [gfortran_regression.yml](./gfortran_regression.yml): GEOS-ESM gfortran docker executor with regression test data
+10. [gfortran-16_regression.yml](./gfortran-16_regression.yml): GEOS-ESM gfortran 16 docker executor with regression test data
+11. [ifort_regression.yml](./ifort_regression.yml): GEOS-ESM ifort docker executor with regression test data
+12. [ifx_regression.yml](./ifx_regression.yml): GEOS-ESM ifx docker executor with regression test data
 
 ### Other
 
-10. [docker.yml](./docker.yml): Generic GEOS-ESM docker executor (used for Docker image publishing)
+13. [docker.yml](./docker.yml): Generic GEOS-ESM docker executor (used for Docker image publishing)
 
 ## Parameters
 
