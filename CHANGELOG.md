@@ -14,6 +14,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Added `gfortran-16`, `gfortran-16_bcs`, and `gfortran-16_regression` executors using GCC 16.2.0 and Open MPI 5.0.11rc1
 - Added `gfortran-16` to `compiler` parameter enum across jobs (`build`, `run_gcm`, `run_gocart_tests`, `run_fv3`, `run_mapl_tutorial`)
 
+### Changed
+
+- Exclude `RC010` in orb review to permit hyphenated executor names (e.g. `gfortran-16`)
+
 ## [6.14.0] - 2026-09-09
 
 ### Changed
