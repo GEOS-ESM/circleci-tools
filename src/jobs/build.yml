@@ -10,7 +10,7 @@ parameters:
     type: enum
     default: ifort
     description: "Compiler to use"
-    enum: ["ifort", "gfortran", "ifx"]
+    enum: ["ifort", "gfortran", "ifx", "gfortran-16"]
   resource_class:
     type: enum
     default: large
