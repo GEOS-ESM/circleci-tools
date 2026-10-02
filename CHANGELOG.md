@@ -7,6 +7,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [5.36.0] - 2026-10-05
+
+### Changed
+
+- Move to v14 land BCs by default in `run_gcm` job and `create_gcm_expt` command
+
+### Removed
+
+- Removed dead `v13` option from `landbcs_type` enum
+
 ## [5.35.0] - 2026-09-10
 
 ### Added
