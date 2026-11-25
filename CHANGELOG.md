@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Fixed
+
+- Default `GEOS_SITE` to `UNKNOWN` in the `cmake` command to prevent CI hostnames from being mistaken for NAS nodes. Jobs can override it through `extra_cmake_options`.
+
 ## [5.37.0] - 2026-11-17
 
 ### Changed
@@ -780,4 +784,3 @@ So older v3 based CI will need to change their `.circleci/config.yml` to use the
 - Updated `@orb.yml`
 - Updated license to GEOS Apache
 - Updated README
-

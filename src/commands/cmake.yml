@@ -44,7 +44,7 @@ steps:
             name: "Run CMake with FV_PRECISION=<< parameters.fv_precision>> using << parameters.cmake_generator >>"
             command: |
               cd ${CIRCLE_WORKING_DIRECTORY}/workspace/build-<< parameters.repo >>
-              cmake ${CIRCLE_WORKING_DIRECTORY}/<< parameters.repo >> -G "<< parameters.cmake_generator >>" -DBASEDIR=$BASEDIR/Linux -DCMAKE_Fortran_COMPILER=<< parameters.compiler >> -DCMAKE_BUILD_TYPE=<< parameters.build_type >> -DUSE_F2PY=OFF -DMPIEXEC_PREFLAGS=${MPIEXEC_PREFLAGS} -DCMAKE_INSTALL_PREFIX=${CIRCLE_WORKING_DIRECTORY}/workspace/install-<< parameters.repo >> << parameters.extra_cmake_options >> -DFV_PRECISION=<< parameters.fv_precision >> |& tee /logfiles/cmake.log
+              cmake ${CIRCLE_WORKING_DIRECTORY}/<< parameters.repo >> -G "<< parameters.cmake_generator >>" -DBASEDIR=$BASEDIR/Linux -DCMAKE_Fortran_COMPILER=<< parameters.compiler >> -DCMAKE_BUILD_TYPE=<< parameters.build_type >> -DUSE_F2PY=OFF -DMPIEXEC_PREFLAGS=${MPIEXEC_PREFLAGS} -DCMAKE_INSTALL_PREFIX=${CIRCLE_WORKING_DIRECTORY}/workspace/install-<< parameters.repo >> -DGEOS_SITE:STRING=UNKNOWN << parameters.extra_cmake_options >> -DFV_PRECISION=<< parameters.fv_precision >> |& tee /logfiles/cmake.log
 
   - unless:
       condition: << parameters.fv_precision >>
@@ -53,4 +53,4 @@ steps:
             name: "Run CMake using << parameters.cmake_generator >>"
             command: |
               cd ${CIRCLE_WORKING_DIRECTORY}/workspace/build-<< parameters.repo >>
-              cmake ${CIRCLE_WORKING_DIRECTORY}/<< parameters.repo >> -G "<< parameters.cmake_generator >>" -DBASEDIR=$BASEDIR/Linux -DCMAKE_Fortran_COMPILER=<< parameters.compiler >> -DCMAKE_BUILD_TYPE=<< parameters.build_type >> -DUSE_F2PY=OFF -DMPIEXEC_PREFLAGS=${MPIEXEC_PREFLAGS} -DCMAKE_INSTALL_PREFIX=${CIRCLE_WORKING_DIRECTORY}/workspace/install-<< parameters.repo >> << parameters.extra_cmake_options >> |& tee /logfiles/cmake.log
+              cmake ${CIRCLE_WORKING_DIRECTORY}/<< parameters.repo >> -G "<< parameters.cmake_generator >>" -DBASEDIR=$BASEDIR/Linux -DCMAKE_Fortran_COMPILER=<< parameters.compiler >> -DCMAKE_BUILD_TYPE=<< parameters.build_type >> -DUSE_F2PY=OFF -DMPIEXEC_PREFLAGS=${MPIEXEC_PREFLAGS} -DCMAKE_INSTALL_PREFIX=${CIRCLE_WORKING_DIRECTORY}/workspace/install-<< parameters.repo >> -DGEOS_SITE:STRING=UNKNOWN << parameters.extra_cmake_options >> |& tee /logfiles/cmake.log
