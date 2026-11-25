@@ -7,6 +7,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [6.18.0] - 2026-11-25
+
+### Fixed
+
+- Default `GEOS_SITE` to `UNKNOWN` in the `cmake` command to prevent CI hostnames from being mistaken for NAS nodes. Jobs can override it through `extra_cmake_options`.
+
 ## [6.17.0] - 2026-11-17
 
 ### Changed
